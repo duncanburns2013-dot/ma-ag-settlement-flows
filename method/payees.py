@@ -3,9 +3,8 @@ import os
 import sys
 
 H = os.environ.get("AG_SWEEP_WORK", "work")  # scratch folder for downloads and intermediate files
-os.chdir(os.environ.get("LEDGER_PROJECT", "."))
-sys.path.insert(0, ".")
-from pipeline.cthru import build_url, fetch_json
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cthru import build_url, fetch_json
 
 W = "budget_fiscal_year>=2010 AND vendor not like '%PAYROLL%'"
 SCOPES = {

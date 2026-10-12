@@ -3,7 +3,7 @@ import os
 import re
 
 H = os.environ.get("AG_SWEEP_WORK", "work")  # scratch folder for downloads and intermediate files
-R = os.environ.get("LEDGER_PROJECT", ".")  # the ledger project checkout these scripts ran inside
+R = os.environ.get("MATCH_TABLES_DIR", ".")  # folder holding the earlier hand-built list (not published here)
 rows = list(csv.DictReader(open(os.path.join(H, "ag-docs.tsv"), encoding="utf-8"), delimiter="\t"))
 
 

@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Massachusetts Attorney General Settlement Money Goes</title>
+<meta name="description" content="What the Massachusetts Attorney General's own announcements and settlement documents say about where settlement money goes. Preliminary.">
+<style>
+/* Design tokens: colors, type and chart roles. */
+:root{
+  color-scheme: light;
+  --bay:#14558F; --berk:#388557; --cran:#680A1D; --berk-ink:#2A6B44;
+  --bg:#E9EBEA; --card:#FFFFFF; --border:#CDD3D1; --rule:#CDD3D1;
+  --text:#0B1113; --ink:#0B1113; --slate:#3E4A4D; --muted:#5A6467;
+  --navy:#14558F; --blue:#14558F; --accent:#680A1D; --red:#A81733; --green:#2A6B44; --amber:#B07C20; --gold:#B07C20;
+  --red-bg:rgba(168,23,51,.06); --green-bg:rgba(42,107,68,.06); --blue-bg:rgba(20,85,143,.06); --amber-bg:rgba(176,124,32,.06);
+  --font-display:'halyard-display',system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-text:'halyard-text',system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:'ibm-plex-mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* chart roles */
+  --stated:var(--bay); --unstated:var(--amber); --listed:var(--bay); --recovered:var(--berk); --spend:#3E4A4D;
+  --grid:var(--border); --axis:var(--muted);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:5rem}
+body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-.02em}
+a{color:var(--navy);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--navy);outline-offset:2px;border-radius:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--navy);padding:8px 12px;border-radius:6px;z-index:300;font-weight:600}
+.skip:focus{left:8px}
+
+.hero{background:var(--navy);color:var(--card);padding:56px 24px 42px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.10) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(104,10,29,.25) 0%,transparent 50%)}
+.hero h1{font-size:clamp(1.6rem,4.5vw,2.6rem);font-weight:400;margin:0 auto 8px;max-width:900px;line-height:1.2;position:relative}
+.hero .sub{color:rgba(255,255,255,.86);font-size:.9rem;margin:0 auto 6px;max-width:760px;position:relative}
+.hero .sub.scope{font-size:.8rem;margin-bottom:24px}
+.hero-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:1000px;margin:0 auto;position:relative}
+.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:18px 10px;text-align:center}
+.hero-stat .val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:500}
+.hero-stat .val.flag{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:3px;text-underline-offset:6px}
+.hero-stat .lbl{font-size:.6875rem;color:rgba(255,255,255,.88);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.hero-stat sup.fn a{color:var(--card)}
+
+.tab-nav{scrollbar-width:thin;display:flex;justify-content:center;background:var(--card);border-bottom:1px solid var(--border);overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.tab-btn{padding:15px 22px;font:inherit;font-size:.78rem;font-weight:600;border:none;background:none;cursor:pointer;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.06em}
+.tab-btn:hover{color:var(--text);background:rgba(0,0,0,.02)}
+.tab-btn[aria-selected=true]{color:var(--navy);border-bottom-color:var(--gold)}
+.container{max-width:1200px;margin:0 auto;padding:28px 24px}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .35s ease}
+.printing .tab-content{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.tab-content.active{animation:none}}
+
+.filter-bar{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 18px;margin-bottom:22px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.filter-bar .row{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center}
+.filter-bar label{font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;gap:8px;align-items:center}
+.filter-bar .scope{font-size:.72rem;color:var(--muted);margin-top:6px}
+select,input[type=search],.btn{font:inherit;font-size:.82rem;padding:6px 10px;border:1px solid var(--muted);border-radius:8px;background:var(--card);color:var(--text)}
+.btn{cursor:pointer;font-weight:600}
+.btn:hover{background:var(--blue-bg)}
+.btn[aria-pressed=true]{background:var(--blue-bg);border-color:var(--navy)}
+
+.section-title{font-size:1.35rem;font-weight:500;margin-bottom:6px;color:var(--navy)}
+.section-sub{font-size:.85rem;color:var(--muted);margin-bottom:18px;max-width:860px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:26px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.stat-card .label{font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.stat-card .value{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-size:1.8rem;line-height:1.1;color:var(--navy)}
+.stat-card .sub{font-size:.72rem;color:var(--muted);margin-top:6px}
+.info-box{background:var(--blue-bg);border:1px solid rgba(20,85,143,.12);border-radius:14px;padding:24px;margin-bottom:26px;border-left:4px solid var(--navy)}
+.info-box h4{color:var(--navy);font-size:.88rem;margin-bottom:10px;font-weight:700}
+.info-box p{font-size:.88rem;line-height:1.65;margin-bottom:8px}
+.info-box p:last-child{margin-bottom:0}
+.alert{background:var(--amber-bg);border:1px solid rgba(176,124,32,.25);border-radius:14px;padding:20px 24px;margin-bottom:26px;border-left:4px solid var(--amber)}
+.alert h4{color:var(--text);font-size:.88rem;margin-bottom:8px;font-weight:700}
+.alert p{font-size:.85rem;line-height:1.6}
+.chart-card,.data-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:26px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.chart-card h3,.data-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.source{font-size:.72rem;color:var(--muted);margin-top:8px;font-style:italic}
+.small{font-size:.78rem;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 4px;font-size:.78rem;color:var(--slate)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.chart{width:100%}
+.chart svg{display:block;max-width:100%}
+svg text{font-family:var(--font-text)}
+svg text.vt{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.rowhit:hover .bar,.rowhit:focus .bar,.col:hover path,.col:focus path{filter:brightness(1.12)}
+.rowhit:focus,.col:focus{outline:none}
+.rowhit:focus-visible .focus,.col:focus-visible .focus{stroke:var(--text)}
+.focus{fill:none;stroke:none}
+
+.data-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.data-table th{text-align:left;padding:10px 14px;border-bottom:2px solid var(--navy);font-weight:700;color:var(--navy);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;vertical-align:bottom}
+.data-table th button{all:unset;cursor:pointer;font-weight:700}
+.data-table th button:focus-visible{outline:2px solid var(--navy)}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+.data-table tr:hover td{background:rgba(20,85,143,.025)}
+.data-table td.n,.data-table th.n{text-align:right}
+.data-table td.n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:.78rem}
+td.nw{white-space:nowrap}
+td.name{min-width:170px}
+td.clause{color:var(--slate);max-width:520px}
+.tag{font-size:.7rem;color:var(--muted);white-space:nowrap}
+.scroll{overflow-x:auto}
+.tools{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:10px 0}
+sup.fn{font-size:.62rem;line-height:0;margin-left:1px}
+sup.fn a{text-decoration:none;padding:0 1px;font-weight:700}
+
+.notes ol{padding-left:22px}
+.notes li{margin-bottom:12px;max-width:900px;font-size:.88rem}
+.notes li.hl{background:var(--blue-bg);border-radius:6px;outline:6px solid var(--blue-bg)}
+.notes li:focus{outline:2px solid var(--navy)}
+.notes b.t{color:var(--navy)}
+ol.req{padding-left:22px;font-size:.88rem}
+
+#tip{position:fixed;z-index:200;pointer-events:none;background:var(--text);color:var(--card);border-radius:6px;padding:8px 10px;font-size:.78rem;line-height:1.35;max-width:280px;display:none;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+#tip b{font-family:var(--font-mono);font-size:.95rem;display:block;font-weight:500}
+#tip .k{display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle}
+footer{text-align:center;padding:36px 24px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);background:var(--card);margin-top:36px}
+footer a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold)}
+footer p{margin-bottom:6px}
+
+@media (max-width:768px){
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .hero{padding:36px 16px 30px}
+  .container{padding:18px}
+  .tab-nav{justify-content:flex-start}
+}
+@media (max-width:480px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .stat-row{grid-template-columns:1fr}
+  .data-table th,.data-table td{padding:8px 6px}
+}
+@media (forced-colors:active){
+  .bar.s1,.col .c1{fill:Highlight}
+  .bar.s2,.col .c2{fill:GrayText}
+  .legend i.k1{background:Highlight!important;forced-color-adjust:none}
+  .legend i.k2{background:GrayText!important;forced-color-adjust:none}
+}
+@media print{
+  .tab-nav,.filter-bar,.btn,.tools,[data-twin],.skip{display:none!important}
+  .hero{background:var(--card);color:var(--ink);padding:12px 0}
+  .hero::before{display:none}
+  .hero-stat{background:var(--card);border:1px solid var(--muted)}
+  .hero-stat .lbl,.hero .sub{color:var(--slate)}
+  .tab-content{display:block!important}
+  .chart-card,.data-card,.stat-card,.info-box{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="hero">
+  <h1>Where Massachusetts Attorney General Settlement Money Goes</h1>
+  <p class="sub">What the office's own announcements and settlement documents say about each dollar. Preliminary, built __BUILT__.</p>
+  <p class="sub scope" id="hero-scope"></p>
+  <div class="hero-stats" id="hero-stats" aria-live="polite"></div>
+</header>
+
+<nav class="tab-nav" role="tablist" aria-label="Sections" id="tabs">
+  <button class="tab-btn" role="tab" id="t-overview" aria-controls="overview" aria-selected="true" data-tab="overview">Overview</button>
+  <button class="tab-btn" role="tab" id="t-settlements" aria-controls="settlements" aria-selected="false" tabindex="-1" data-tab="settlements">Settlements</button>
+  <button class="tab-btn" role="tab" id="t-multistate" aria-controls="multistate" aria-selected="false" tabindex="-1" data-tab="multistate">Multistate</button>
+  <button class="tab-btn" role="tab" id="t-documents" aria-controls="documents" aria-selected="false" tabindex="-1" data-tab="documents">Who decides</button>
+  <button class="tab-btn" role="tab" id="t-context" aria-controls="context" aria-selected="false" tabindex="-1" data-tab="context">Context</button>
+  <button class="tab-btn" role="tab" id="t-notes" aria-controls="notes-tab" aria-selected="false" tabindex="-1" data-tab="notes">Notes and disclosures</button>
+</nav>
+
+<main class="container" id="main">
+<noscript><div class="alert"><h4>JavaScript is off</h4><p>This page draws its charts and tables with JavaScript. The registers behind it are plain tab-separated files in the repository.</p></div></noscript>
+
+<div class="filter-bar" id="filters" role="region" aria-label="Filters">
+  <div class="row">
+    <label>Announced total
+      <select id="f-set">
+        <option value="all">All sizes</option>
+        <option value="big">$1 million and over</option>
+        <option value="small">Under $1 million</option>
+      </select></label>
+    <label>Announced
+      <select id="f-years">
+        <option value="all">2015 to 2026</option>
+        <option value="2015-2018">2015 to 2018</option>
+        <option value="2019-2022">2019 to 2022</option>
+        <option value="2023-2026">2023 to 2026</option>
+      </select></label>
+    <label><input type="checkbox" id="f-cit" checked> Include administrative citations</label>
+    <label><input type="checkbox" id="f-crim" checked> Include criminal cases</label>
+    <button class="btn" id="f-reset" type="button">Reset</button>
+  </div>
+  <div class="scope">Filters scope the figures at the top and the Overview, Settlements, Multistate and Who decides tabs. Size, citations and criminal cases apply to single-state settlements only; the year range applies to all four.</div>
+</div>
+
+<div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="t-overview">
+  <h2 class="section-title">Single-state settlements</h2>
+  <p class="section-sub"><span id="slice-note"></span><span id="slice-refs"></span></p>
+  <div class="info-box" id="coverage-box"></div>
+  <div class="stat-row" id="kpis"></div>
+  <div class="chart-card">
+    <div class="card-head">
+      <div><h3>What the announcements say about each dollar<sup class="fn"><a href="#fn-5" aria-label="Note 5">5</a></sup><sup class="fn"><a href="#fn-6" aria-label="Note 6">6</a></sup><sup class="fn"><a href="#fn-7" aria-label="Note 7">7</a></sup></h3>
+        <p class="small">Share of announced totals, by the destination the release states.</p></div>
+      <button class="btn" type="button" data-twin="chart-a" aria-pressed="false" aria-controls="chart-a table-a">Table view</button>
+    </div>
+    <div class="legend"><span><i class="k1" style="background:var(--stated)"></i>Destination amount stated</span><span><i class="k2" style="background:var(--unstated)"></i>No dollar split stated</span></div>
+    <div class="chart" id="chart-a"></div>
+    <div class="scroll" id="table-a" hidden></div>
+    <div class="source" id="note-a"></div>
+  </div>
+</div>
+
+<div id="settlements" class="tab-content" role="tabpanel" aria-labelledby="t-settlements">
+  <div class="data-card">
+    <h3>Every settlement or court order in the slice<sup class="fn"><a href="#fn-2" aria-label="Note 2">2</a></sup><sup class="fn"><a href="#fn-4" aria-label="Note 4">4</a></sup><sup class="fn"><a href="#fn-7" aria-label="Note 7">7</a></sup></h3>
+    <div class="tools">
+      <input type="search" id="q-s" placeholder="Search defendant" aria-label="Search settlements by defendant">
+      <span class="small" id="count-s"></span>
+    </div>
+    <div class="scroll"><table class="data-table" id="tbl-s" aria-label="Settlements and court orders in the current slice"></table></div>
+    <div class="tools"><button class="btn" type="button" id="more-s">Show 25 more</button></div>
+    <div class="source">Each row links to the Attorney General's release. Dollar columns are what the release states. Some rows are criminal cases and some are administrative citations; they are tagged and can be filtered out above.</div>
+  </div>
+</div>
+
+<div id="multistate" class="tab-content" role="tabpanel" aria-labelledby="t-multistate">
+  <h2 class="section-title">Multistate settlements: the Massachusetts share</h2>
+  <p class="section-sub">Where the release states a Massachusetts amount. National totals are not Massachusetts dollars and are left out.<sup class="fn"><a href="#fn-8" aria-label="Note 8">8</a></sup></p>
+  <div class="chart-card">
+    <div class="card-head">
+      <div><h3 id="multi-title"></h3><p class="small" id="multi-sub"></p></div>
+      <button class="btn" type="button" data-twin="chart-b" aria-pressed="false" aria-controls="chart-b table-b">Table view</button>
+    </div>
+    <div class="legend"><span><i class="k1" style="background:var(--stated)"></i>Destination stated</span><span><i class="k2" style="background:var(--unstated)"></i>Use not stated</span></div>
+    <div class="chart" id="chart-b"></div>
+    <div class="scroll" id="table-b" hidden></div>
+    <div class="source" id="multi-note"></div>
+  </div>
+</div>
+
+<div id="documents" class="tab-content" role="tabpanel" aria-labelledby="t-documents">
+  <h2 class="section-title">Who decides: the settlement documents</h2>
+  <p class="section-sub"><span id="docs-note"></span><sup class="fn"><a href="#fn-9" aria-label="Note 9">9</a></sup></p>
+  <div class="data-card">
+    <div class="tools">
+      <label class="small">Show
+        <select id="f-lvl"><option value="all">Both</option><option value="strict">Sole discretion over the payment</option><option value="partial">Discretion over part, or looser wording</option></select></label>
+      <input type="search" id="q-d" placeholder="Search defendant or clause" aria-label="Search documents">
+      <span class="small" id="count-d"></span>
+    </div>
+    <div class="scroll"><table class="data-table" id="tbl-d" aria-label="Settlement documents with an Attorney General discretion clause"></table></div>
+    <div class="tools"><button class="btn" type="button" id="more-d">Show 15 more</button></div>
+    <div class="source">Clauses are quoted as read from the document. Scanned documents were read by OCR, so the count is a floor.</div>
+  </div>
+</div>
+
+<div id="context" class="tab-content" role="tabpanel" aria-labelledby="t-context">
+  <h2 class="section-title">Context</h2>
+  <p class="section-sub">These panels ignore the filters and always show the full period.</p>
+  <div class="chart-card">
+    <div class="card-head">
+      <div><h3>The office's spending from retained-revenue lines<sup class="fn"><a href="#fn-10" aria-label="Note 10">10</a></sup></h3><p class="small" id="budget-sub"></p></div>
+      <button class="btn" type="button" data-twin="chart-c" aria-pressed="false" aria-controls="chart-c table-c">Table view</button>
+    </div>
+    <div class="chart" id="chart-c"></div>
+    <div class="scroll" id="table-c" hidden></div>
+    <div class="source" id="budget-note"></div>
+  </div>
+  <div class="chart-card">
+    <div class="card-head">
+      <div><h3>How complete is the archive listing?<sup class="fn"><a href="#fn-11" aria-label="Note 11">11</a></sup></h3><p class="small" id="cov-sub"></p></div>
+      <button class="btn" type="button" data-twin="chart-d" aria-pressed="false" aria-controls="chart-d table-d">Table view</button>
+    </div>
+    <div class="legend"><span><i class="k1" style="background:var(--listed)"></i>In the live listing</span><span><i class="k2" style="background:var(--recovered)"></i>Recovered from the Internet Archive</span></div>
+    <div class="chart" id="chart-d"></div>
+    <div class="scroll" id="table-d" hidden></div>
+  </div>
+  <div class="data-card">
+    <h3>Grant recipients and their political-money ties<sup class="fn"><a href="#fn-12" aria-label="Note 12">12</a></sup></h3>
+    <p class="small" id="gr-note"></p>
+    <div class="tools">
+      <input type="search" id="q-g" placeholder="Search organization" aria-label="Search grantees">
+      <span class="small" id="count-g"></span>
+    </div>
+    <div class="scroll"><table class="data-table" id="tbl-g" aria-label="Grant recipient names with donation, lobbying and disclosure records"></table></div>
+    <div class="tools"><button class="btn" type="button" id="more-g">Show 25 more</button></div>
+    <div class="source" id="gr-source"></div>
+  </div>
+</div>
+
+<div id="notes-tab" class="tab-content notes" role="tabpanel" aria-labelledby="t-notes">
+  <h2 class="section-title" id="h-notes">Notes and disclosures</h2>
+  <p class="section-sub">Read these before quoting a figure. Most numbers in the notes are computed from the same data as the charts; the few typed in by hand are listed in note 14.</p>
+  <p class="tools"><button class="btn" id="note-back" type="button" hidden>Back to where you were reading</button></p>
+  <div class="data-card"><ol id="notes"></ol></div>
+  <h2 class="section-title">What the public record cannot answer</h2>
+  <p class="section-sub">Whether the discretionary money reached consumers. That needs the office's own accounting. The repository lists ten public records requests, each tied to the dataset that raises the question.</p>
+  <div class="data-card"><ol class="req" id="reqs"></ol></div>
+</div>
+</main>
+
+<footer>
+  <p><b>Status.</b> Preliminary. Announcements state what a settlement is worth, not what was collected or delivered, and a model made the readings<sup class="fn"><a href="#fn-13" aria-label="Note 13">13</a></sup>. Corrections are welcome in the repository.</p>
+  <p id="foot-links"></p>
+</footer>
+<div id="tip" role="tooltip"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const REPO = DATA.meta.repo;
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const $ = (s, el) => (el || document).querySelector(s);
+const sum = (rows, k) => rows.reduce((a, r) => a + (r[k] || 0), 0);
+const money = n => n >= 999950000 ? "$" + (n / 1e9).toFixed(2) + "B" : n >= 999500 ? "$" + (n / 1e6).toFixed(1) + "M" : n >= 1e3 ? "$" + Math.round(n / 1e3) + "K" : "$" + Math.round(n);
+const full = n => "$" + Math.round(n).toLocaleString("en-US");
+const pct = x => (x * 100).toFixed(1) + "%";
+const pct0 = x => Math.round(x * 100) + "%";
+const fdate = iso => { const p = iso.split("-"); return p.length === 3 ? MON[+p[1] - 1] + " " + (+p[2]) + ", " + p[0] : iso; };
+const safeUrl = u => (typeof u === "string" && u.indexOf("https://") === 0) ? u : "";
+const el = (tag, attrs, text) => { const e = document.createElement(tag); if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
+const NS = "http://www.w3.org/2000/svg";
+const sv = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
+const link = (href, text, label) => { const a = el("a", { href: safeUrl(href) || "#", target: "_blank", rel: "noopener" }, text); if (label) a.setAttribute("aria-label", label); return a; };
+const parts = r => r.hm + r.pen + r.un + r.ag + r.ds + r.nc;
+
+const state = { tab: "overview", set: "all", years: "all", cit: true, crim: true, qs: "", shownS: 25, sortS: { k: "h", dir: -1 }, qd: "", lvl: "all", shownD: 15, qg: "", shownG: 25, sortG: { k: "tot", dir: -1 }, back: null };
+const TABS = ["overview", "settlements", "multistate", "documents", "context", "notes"];
+const FILTERED = ["overview", "settlements", "multistate", "documents"];
+
+function inYears(iso) {
+  if (state.years === "all") return true;
+  const y = +iso.slice(0, 4), p = state.years.split("-");
+  return y >= +p[0] && y <= +p[1];
+}
+const sizeOk = r => state.set === "all" || (state.set === "big" ? r.h >= 1e6 : (r.h > 0 && r.h < 1e6));
+function sliceS() { return DATA.settlements.filter(r => sizeOk(r) && inYears(r.d) && (state.cit || !r.cit) && (state.crim || !r.crim)); }
+function agg(rows) {
+  const S = rows.filter(r => r.h > 0);
+  const H = sum(S, "h");
+  const o = { n: S.length, all: rows.length, H: H, hm: sum(S, "hm"), pen: sum(S, "pen"), un: sum(S, "un"), ag: sum(S, "ag"), ds: sum(S, "ds"), nc: sum(S, "nc") };
+  o.parts = o.hm + o.pen + o.un + o.ag + o.ds + o.nc;
+  o.split = H - o.parts;
+  o.noTotal = rows.length - S.length;
+  const any = S.filter(r => parts(r) > 0), none = S.filter(r => parts(r) <= 0);
+  o.any = any.length; o.none = none.length; o.noneH = sum(none, "h");
+  const gap = r => Math.abs(parts(r) - r.h);
+  const rec = S.filter(r => gap(r) <= 0.03 * r.h), exact = S.filter(r => gap(r) < 0.5);
+  o.rec = rec.length; o.recH = sum(rec, "h"); o.exact = exact.length;
+  o.recP = { hm: sum(rec, "hm"), pen: sum(rec, "pen"), un: sum(rec, "un"), ag: sum(rec, "ag"), ds: sum(rec, "ds"), nc: sum(rec, "nc") };
+  o.recParts = o.recP.hm + o.recP.pen + o.recP.un + o.recP.ag + o.recP.ds + o.recP.nc;
+  o.top3 = S.map(r => ({ n: r.n.replace(/;/g, ",").slice(0, 38), v: r.h - parts(r) })).sort((a, b) => b.v - a.v).slice(0, 3);
+  o.topUn = S.map(r => ({ n: r.n.replace(/;/g, ",").slice(0, 38), v: r.un })).sort((a, b) => b.v - a.v).slice(0, 2);
+  return o;
+}
+const yearsLabel = () => state.years === "all" ? "2015 to 2026" : state.years.replace("-", " to ");
+const docsSlice = () => DATA.docs.filter(d => inYears(d.d));
+const multiSlice = () => DATA.multistate.filter(r => inYears(r.d));
+
+/* ---------- tooltip ---------- */
+const tip = $("#tip");
+function showTip(e, build) {
+  tip.replaceChildren(); build(tip); tip.style.display = "block";
+  const r = tip.getBoundingClientRect();
+  let x, y;
+  if (e.clientX !== undefined && e.type !== "focus" && e.type !== "focusin") { x = e.clientX + 14; y = e.clientY + 14; }
+  else { const b = e.target.getBoundingClientRect(); x = b.left + 12; y = b.top - r.height - 6; }
+  if (x + r.width > window.innerWidth - 8) x = window.innerWidth - r.width - 8;
+  if (y + r.height > window.innerHeight - 8) y = window.innerHeight - r.height - 8;
+  if (y < 8) y = 8;
+  tip.style.left = Math.max(8, x) + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => { tip.style.display = "none"; };
+document.addEventListener("keydown", e => { if (e.key === "Escape") hideTip(); });
+function tipLines(title, lines, color) {
+  return t => {
+    t.appendChild(el("b", null, title));
+    lines.forEach(l => { const d = el("div"); if (color && l.key) { const k = el("span", { class: "k" }); k.style.background = color; d.appendChild(k); } d.appendChild(document.createTextNode(l.text)); t.appendChild(d); });
+  };
+}
+function rove(svg, selector) {
+  const items = Array.prototype.slice.call(svg.querySelectorAll(selector));
+  items.forEach((g, i) => { g.tabIndex = i === 0 ? 0 : -1; });
+  svg.addEventListener("keydown", e => {
+    const i = items.indexOf(document.activeElement);
+    if (i < 0) return;
+    let j = i;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") j = Math.min(items.length - 1, i + 1);
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") j = Math.max(0, i - 1);
+    else if (e.key === "Home") j = 0;
+    else if (e.key === "End") j = items.length - 1;
+    else return;
+    e.preventDefault();
+    items[i].tabIndex = -1; items[j].tabIndex = 0; items[j].focus();
+  });
+}
+
+/* ---------- charts ---------- */
+function barChart(host, rows, opt) {
+  hideTip(); host.replaceChildren();
+  const W = Math.max(host.clientWidth, 280), rowH = 50, top = 24, right = 150, pw = W - right - 4;
+  const H = top + rows.length * rowH + 4;
+  const maxV = Math.max.apply(null, rows.map(r => r.v).concat([0.0001])) * 1.08;
+  const s = sv("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "group", "aria-label": opt.aria });
+  opt.ticks.forEach(t => {
+    const x = Math.round(pw * (t / maxV));
+    if (x > pw) return;
+    s.appendChild(sv("line", { x1: x + 0.5, x2: x + 0.5, y1: top - 6, y2: H - 4, stroke: t === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1 }));
+    s.appendChild(sv("text", { class: "vt", x: x + 4, y: 12, fill: "var(--muted)", "font-size": 11 }, opt.tickFmt(t)));
+  });
+  rows.forEach((r, i) => {
+    const y0 = top + i * rowH;
+    const g = sv("g", { class: "rowhit", role: "img", "aria-label": r.aria });
+    g.appendChild(sv("rect", { x: 0, y: y0 - 2, width: W, height: rowH - 2, fill: "transparent" }));
+    g.appendChild(sv("rect", { class: "focus", x: 0.5, y: y0 - 1.5, width: W - 1, height: rowH - 3, rx: 4 }));
+    g.appendChild(sv("text", { x: 0, y: y0 + 14, fill: "var(--slate)", "font-size": 13 }, r.label));
+    const w = Math.max(r.v > 0 ? 2 : 0, Math.round(pw * (r.v / maxV)));
+    const bh = 16, by = y0 + 22;
+    if (w > 0) {
+      const rr = Math.min(4, w), d = "M0," + by + " h" + (w - rr) + " a" + rr + "," + rr + " 0 0 1 " + rr + "," + rr + " v" + (bh - 2 * rr) + " a" + rr + "," + rr + " 0 0 1 " + (-rr) + "," + rr + " h" + (-(w - rr)) + " z";
+      g.appendChild(sv("path", { class: "bar " + r.cls, d: d, fill: r.color }));
+    }
+    g.appendChild(sv("text", { class: "vt", x: w + 8, y: by + 13, fill: "var(--text)", "font-size": 13, "font-weight": 600 }, r.valueText));
+    g.appendChild(sv("text", { class: "vt", x: w + 8 + (r.valueText.length * 7.9 + 8), y: by + 13, fill: "var(--muted)", "font-size": 11 }, r.sub));
+    const on = e => showTip(e, tipLines(r.label, r.tip, r.color));
+    g.addEventListener("pointermove", on); g.addEventListener("pointerleave", hideTip); g.addEventListener("focus", on); g.addEventListener("blur", hideTip);
+    s.appendChild(g);
+  });
+  host.appendChild(s);
+  rove(s, ".rowhit");
+}
+
+function colChart(host, items, opt) {
+  hideTip(); host.replaceChildren();
+  const W = Math.max(host.clientWidth, 280), H = opt.height || 240, left = 44, bottom = 28, top = 12, right = 8;
+  const pw = W - left - right, ph = H - top - bottom;
+  const maxV = opt.max;
+  const s = sv("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "group", "aria-label": opt.aria });
+  opt.ticks.forEach(t => {
+    const y = top + ph - Math.round(ph * t / maxV);
+    s.appendChild(sv("line", { x1: left, x2: W - right, y1: y + 0.5, y2: y + 0.5, stroke: t === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1 }));
+    s.appendChild(sv("text", { class: "vt", x: left - 6, y: y + 4, "text-anchor": "end", fill: "var(--muted)", "font-size": 11 }, opt.yFmt(t)));
+  });
+  const n = items.length, slot = pw / n, bw = Math.max(1.5, Math.min(24, slot * 0.7));
+  const showLbl = new Set(); let lastX = Infinity;
+  for (let i = n - 1; i >= 0; i--) { const L = items[i].xlabel; if (!L) continue; const x = left + slot * i + slot / 2; if (lastX - x >= L.length * 6.6 + 4) { showLbl.add(i); lastX = x; } }
+  items.forEach((it, i) => {
+    const cx = left + slot * i + slot / 2;
+    const g = sv("g", { class: "col", role: "img", "aria-label": it.aria });
+    g.appendChild(sv("rect", { x: cx - slot / 2, y: top, width: slot, height: ph + bottom - 4, fill: "transparent" }));
+    g.appendChild(sv("rect", { class: "focus", x: cx - slot / 2, y: top, width: slot, height: ph + 2 }));
+    const segs = it.stack.filter(p => Math.round(ph * p.v / maxV) > 0);
+    let yb = top + ph;
+    segs.forEach((p, j) => {
+      const h = Math.round(ph * p.v / maxV);
+      const last = j === segs.length - 1;
+      const rr = last ? Math.min(4, bw / 2, h) : 0;
+      const x = cx - bw / 2, y = yb - h;
+      const d = "M" + x + "," + (y + h) + " V" + (y + rr) + (rr ? " a" + rr + "," + rr + " 0 0 1 " + rr + "," + (-rr) + " h" + (bw - 2 * rr) + " a" + rr + "," + rr + " 0 0 1 " + rr + "," + rr : " h" + bw) + " V" + (y + h) + " z";
+      g.appendChild(sv("path", { class: p.cls, d: d, fill: p.color, opacity: p.opacity || 1 }));
+      yb -= h + 2;
+    });
+    if (it.xlabel && showLbl.has(i)) g.appendChild(sv("text", { class: "vt", x: cx, y: H - 8, "text-anchor": "middle", fill: "var(--muted)", "font-size": 11 }, it.xlabel));
+    if (it.vlabel) g.appendChild(sv("text", { class: "vt", x: cx, y: top + ph - Math.round(ph * it.total / maxV) - 6, "text-anchor": "middle", fill: "var(--text)", "font-size": 12, "font-weight": 600 }, it.vlabel));
+    const on = e => showTip(e, tipLines(it.title, it.tip, null));
+    g.addEventListener("pointermove", on); g.addEventListener("pointerleave", hideTip); g.addEventListener("focus", on); g.addEventListener("blur", hideTip);
+    s.appendChild(g);
+  });
+  host.appendChild(s);
+  rove(s, ".col");
+}
+
+function tableOf(host, heads, rows, label) {
+  host.replaceChildren();
+  const t = el("table", { class: "data-table", "aria-label": label || "Chart data" }), th = el("thead"), tr = el("tr");
+  heads.forEach((h, i) => tr.appendChild(el("th", i > 0 ? { class: "n" } : null, h)));
+  th.appendChild(tr); t.appendChild(th);
+  const tb = el("tbody");
+  rows.forEach(r => { const row = el("tr"); r.forEach((c, i) => row.appendChild(el("td", i > 0 ? { class: "n" } : null, c))); tb.appendChild(row); });
+  t.appendChild(tb); host.appendChild(t);
+}
+function addRefs(host, list) {
+  list.forEach(n => { const s = el("sup", { class: "fn" }); s.appendChild(el("a", { href: "#fn-" + n, "aria-label": "Note " + n }, String(n))); host.appendChild(s); });
+}
+function refs(host, list) { host.replaceChildren(); addRefs(host, list); }
+const sortHead = (cols, st, onSort) => {
+  const th = el("thead"), tr = el("tr");
+  cols.forEach(c => {
+    const sorted = st.k === c[0];
+    const h = el("th", { class: c[2] ? "n" : "", "aria-sort": sorted ? (st.dir > 0 ? "ascending" : "descending") : "none" });
+    const b = el("button", { type: "button", "data-k": c[0] }, c[1] + (sorted ? (st.dir > 0 ? " ▲" : " ▼") : ""));
+    b.addEventListener("click", () => onSort(c[0], c[2]));
+    h.appendChild(b); tr.appendChild(h);
+  });
+  return { th: th, tr: tr };
+};
+function refocusSort(tbl, k) { const b = $("#" + tbl + " th button[data-k='" + k + "']"); if (b) b.focus(); }
+
+/* ---------- hero ---------- */
+function renderHero() {
+  const rows = sliceS(), a = agg(rows), docs = docsSlice(), ms = multiSlice();
+  const strict = docs.filter(d => d.lvl === "strict").length;
+  const setName = { all: "all sizes", big: "totals of $1 million and over", small: "totals under $1 million" }[state.set];
+  const bits = [setName, yearsLabel()];
+  if (!state.cit) bits.push("no citations");
+  if (!state.crim) bits.push("no criminal cases");
+  $("#hero-scope").textContent = "Showing: " + bits.join(", ") + ".";
+  const cells = a.H ? [
+    [String(a.n), "Settlements with a stated total", "", [2]],
+    [money(a.H), "Announced totals", "", [1]],
+    [pct(a.split / a.H), "Announced with no dollar split", "flag", [6]],
+    [pct(a.hm / a.H), "Stated to the harmed", "", [5, 7]],
+    [String(strict), "Documents: AG sole discretion (a floor)", "", [9]],
+    [money(sum(ms, "ma")), "Massachusetts share, multistate, at stated maximums", "", [8]]
+  ] : [["0", "Settlements match", "", []]];
+  const h = $("#hero-stats"); h.replaceChildren();
+  cells.forEach(c => {
+    const d = el("div", { class: "hero-stat" });
+    d.appendChild(el("div", { class: "val" + (c[2] ? " " + c[2] : "") }, c[0]));
+    const l = el("div", { class: "lbl" }); l.appendChild(document.createTextNode(c[1])); addRefs(l, c[3]); d.appendChild(l);
+    h.appendChild(d);
+  });
+}
+
+/* ---------- overview ---------- */
+function renderOverview() {
+  const rows = sliceS(), a = agg(rows);
+  $("#slice-note").textContent = a.n + " settlements with a stated total, " + yearsLabel() + ", " + money(a.H) + " in announced totals." + (a.noTotal ? " " + a.noTotal + " more state no total and are left out of the shares." : "");
+  refs($("#slice-refs"), [1, 2, 3]);
+  const box = $("#coverage-box"); box.replaceChildren();
+  box.appendChild(el("h4", null, "How much of the picture is visible"));
+  if (!a.H) {
+    box.appendChild(el("p", null, "No settlements match these filters.")); $("#kpis").replaceChildren(); $("#chart-a").replaceChildren(); $("#table-a").replaceChildren(); $("#note-a").textContent = ""; return;
+  }
+  const small = rows.filter(r => r.h > 0 && r.h < 100000).length;
+  box.appendChild(el("p", null, "Of " + a.n + " settlements with a stated total, " + a.any + " (" + pct0(a.any / a.n) + ") state a dollar amount for at least one destination. " + a.rec + " (" + pct0(a.rec / a.n) + ") have stated amounts within 3% of the total (" + a.exact + " exactly). The other " + (a.n - a.any) + " give a total with no dollar split. By dollars, " + pct(1 - a.split / a.H) + " of announced totals is assigned to a destination."));
+  const rp = a.recP, rpt = a.recParts || 1;
+  box.appendChild(el("p", null, "Where the stated amounts add up to the total (" + a.rec + " settlements, " + money(a.recH) + "), " + pct(rp.hm / rpt) + " goes to the harmed, " + pct((rp.pen + rp.un) / rpt) + " to the Commonwealth, " + pct(rp.ag / rpt) + " to state agencies, " + pct(rp.ds / rpt) + " to designated recipients and " + pct(rp.nc / rpt) + " is non-cash relief."));
+  const big = rows.filter(r => r.h > 0).reduce((m, r) => r.h > m.h ? r : m, { h: 0 });
+  if (a.n > 1 && big.h / a.H >= 0.1) {
+    const b = agg(rows.filter(r => r !== big)), bp = b.recP, bpt = b.recParts || 1;
+    box.appendChild(el("p", null, "The largest settlement in this view, " + big.n.replace(/;/g, ",") + " (" + money(big.h) + "), is " + pct(big.h / a.H) + " of announced totals" + (big.un && a.un ? " and " + pct(big.un / a.un) + " of the money paid to the Commonwealth with no stated purpose" : "") + ". Without it, " + pct(b.hm / b.H) + " is stated to the harmed, " + pct(b.nc / b.H) + " is non-cash relief and " + pct(b.split / b.H) + " has no dollar split. Among the " + b.rec + " other settlements whose stated amounts add up to the total (" + money(b.recH) + "), " + pct(bp.hm / bpt) + " goes to the harmed, " + pct(bp.nc / bpt) + " is non-cash relief, " + pct(bp.pen / bpt) + " is penalties, fines, fees or costs, " + pct(bp.ds / bpt) + " goes to designated recipients, " + pct(bp.ag / bpt) + " to state agencies and " + pct(bp.un / bpt) + " is paid to the Commonwealth with no stated purpose."));
+  }
+  box.appendChild(el("p", null, "This is the announced record only. Settlements the office never announced are not in it, and this repository found no public count of the office's total settlements. Settlements under $100,000 were not systematically searched for" + (small ? "; " + small + " counted settlements fall below that figure because their releases mention a larger amount elsewhere" : "") + "."));
+  const tiles = [
+    ["State a dollar amount for any destination", a.any + " of " + a.n, pct0(a.any / a.n) + " of settlements"],
+    ["Stated amounts add up to the total", a.rec + " of " + a.n, money(a.recH) + " of announced totals"],
+    ["Stated to the harmed", money(a.hm), pct(a.hm / a.H) + " of announced totals"],
+    ["Stated to the state or its agencies", money(a.pen + a.un + a.ag), pct((a.pen + a.un + a.ag) / a.H) + " of announced totals"]
+  ];
+  const k = $("#kpis"); k.replaceChildren();
+  tiles.forEach(t => { const d = el("div", { class: "stat-card" }); d.appendChild(el("div", { class: "label" }, t[0])); d.appendChild(el("div", { class: "value" }, t[1])); d.appendChild(el("div", { class: "sub" }, t[2])); k.appendChild(d); });
+  const noneTip = "Not assigned to a destination by the release. " + pct(a.noneH / a.H) + " of announced totals sits in " + a.none + " settlements whose release states no destination amount; " + pct((a.split - a.noneH) / a.H) + " is the unassigned remainder of settlements that split part of the money.";
+  const cats = [
+    ["No dollar split stated", a.split, "s2", "var(--unstated)", noneTip],
+    ["To the harmed", a.hm, "s1", "var(--stated)", "Refunds, restitution, bill credits, back wages."],
+    ["To state agencies for their own losses", a.ag, "s1", "var(--stated)", "Mostly MassHealth recoveries."],
+    ["Paid to the Commonwealth, purpose not stated", a.un, "s1", "var(--stated)", "The release names the state as payee and no use."],
+    ["Penalties, fines, fees or costs", a.pen, "s1", "var(--stated)", "Called a penalty, fine, fee or cost in the release."],
+    ["To designated funds, programs or organizations", a.ds, "s1", "var(--stated)", "A named fund, program or recipient."],
+    ["Non-cash relief", a.nc, "s1", "var(--stated)", "Valued relief such as loan principal reduction."]
+  ];
+  const brs = cats.map(c => ({ label: c[0], v: c[1] / a.H, cls: c[2], color: c[3], valueText: pct(c[1] / a.H), sub: money(c[1]),
+    aria: c[0] + ": " + pct(c[1] / a.H) + ", " + full(c[1]), tip: [{ text: full(c[1]) + " of " + full(a.H) }, { text: c[4] }] }));
+  barChart($("#chart-a"), brs, { aria: "Share of announced settlement dollars by stated destination", ticks: [0, 0.25, 0.5, 0.75], tickFmt: t => Math.round(t * 100) + "%" });
+  tableOf($("#table-a"), ["Destination", "Share", "Dollars"], cats.map(c => [c[0], pct(c[1] / a.H), full(c[1])]), "Share of announced dollars by destination");
+  const t3 = a.top3.filter(x => x.v > 0), t3s = sum(t3, "v");
+  $("#note-a").textContent = "Source: Attorney General releases, 2015 to 2026. 'Announced' means what the release states, not what was collected. Some releases say the money goes to consumers, drivers or homeowners without an amount; the chart counts only stated dollar amounts (note 6). The three settlements with the most unassigned dollars (" + t3.map(x => x.n + " " + money(x.v)).join("; ") + ") hold " + money(t3s) + ", " + pct0(t3s / a.split) + " of the unassigned total." + (a.un ? " The two largest payments to the Commonwealth with no stated purpose (" + a.topUn.filter(x => x.v > 0).map(x => x.n + " " + money(x.v)).join("; ") + ") are " + pct0(sum(a.topUn, "v") / a.un) + " of that bucket." : "");
+}
+
+/* ---------- settlements table ---------- */
+const SCOLS = [["d", "Date", false], ["n", "Settlement", false], ["h", "Announced total", true], ["hm", "To the harmed", true], ["nc", "Non-cash relief", true], ["st", "To the state", true], ["ag", "To agencies", true], ["ds", "Designated", true]];
+function renderSettlements(refocus) {
+  const rows = sliceS();
+  const q = state.qs.trim().toLowerCase();
+  let r = rows.filter(x => !q || x.n.toLowerCase().indexOf(q) >= 0);
+  r = r.map(x => Object.assign({ st: x.pen + x.un }, x));
+  const k = state.sortS.k, dir = state.sortS.dir;
+  r.sort((x, y) => (typeof x[k] === "string" ? x[k].localeCompare(y[k]) : x[k] - y[k]) * dir);
+  $("#count-s").textContent = r.length + " settlements, including those with no stated total";
+  const t = $("#tbl-s"); t.replaceChildren();
+  const hd = sortHead(SCOLS, state.sortS, (key, numeric) => { state.sortS = { k: key, dir: state.sortS.k === key ? -state.sortS.dir : (numeric ? -1 : 1) }; renderSettlements(key); });
+  hd.tr.appendChild(el("th", null, "Source")); hd.th.appendChild(hd.tr); t.appendChild(hd.th);
+  const tb = el("tbody");
+  r.slice(0, state.shownS).forEach(x => {
+    const row = el("tr");
+    row.appendChild(el("td", { class: "nw" }, fdate(x.d)));
+    const nm = el("td", { class: "name" }); nm.appendChild(document.createTextNode(x.n));
+    const tags = [x.cit ? "citation" : "", x.crim ? "criminal case" : "", x.ti ? "total from title" : "", x.ceil ? "'up to' figure" : "", x.h > 0 ? "" : "no total stated"].filter(Boolean);
+    if (tags.length) nm.appendChild(el("span", { class: "tag" }, " (" + tags.join("; ") + ")"));
+    row.appendChild(nm);
+    [x.h, x.hm, x.nc, x.st, x.ag, x.ds].forEach(v => row.appendChild(el("td", { class: "n" }, v ? full(v) : "-")));
+    const s = el("td"); s.appendChild(link(x.u, "release", "Release for " + x.n.slice(0, 60) + ", " + fdate(x.d))); row.appendChild(s);
+    tb.appendChild(row);
+  });
+  t.appendChild(tb);
+  $("#more-s").style.display = r.length > state.shownS ? "" : "none";
+  if (refocus) refocusSort("tbl-s", refocus);
+}
+
+/* ---------- multistate ---------- */
+const CLS = { opioid_abatement: ["Opioid abatement", "s1"], mixed: ["Mixed uses", "s1"], state_agency: ["State agencies", "s1"], unstated: ["Use not stated", "s2"], state_general: ["General Fund or the Commonwealth", "s1"], harmed: ["Restitution to the harmed", "s1"], designated: ["Designated programs", "s1"] };
+function renderMulti() {
+  const rows = multiSlice();
+  const total = sum(rows, "ma");
+  $("#multi-title").textContent = "Massachusetts's stated share: " + money(total) + " across " + rows.length + " matters, " + yearsLabel() + ", at stated maximums";
+  $("#multi-sub").textContent = "Share of the stated Massachusetts amount, by where the release says it goes.";
+  const ceil = rows.filter(r => r.ceil), g = rows.filter(r => r.g);
+  $("#multi-note").textContent = ceil.length && total ? ceil.length + " of these matters are ceilings (" + ceil.map(r => r.n.split(";")[0].slice(0, 22) + " " + money(r.ma)).join(", ") + "), " + pct0(sum(ceil, "ma") / total) + " of the total" + (g.length ? "; counting only the guaranteed part of " + g.map(r => r.n.split(";")[0].slice(0, 22)).join(", ") + " would lower it by " + money(sum(g, "ma") - sum(g, "g")) : "") + ". See note 8." : "See note 8.";
+  if (!total) { $("#chart-b").replaceChildren(); $("#table-b").replaceChildren(); return; }
+  const by = {};
+  rows.forEach(r => { (by[r.cls] = by[r.cls] || []).push(r); });
+  const list = Object.keys(CLS).map(c => { const rs = by[c] || []; return { c: c, v: sum(rs, "ma"), rs: rs }; }).filter(x => x.v > 0).sort((x, y) => y.v - x.v);
+  const brs = list.map(x => {
+    const top = x.rs.slice().sort((p, q) => q.ma - p.ma).slice(0, 3);
+    return { label: CLS[x.c][0], v: x.v / total, cls: CLS[x.c][1], color: CLS[x.c][1] === "s2" ? "var(--unstated)" : "var(--stated)", valueText: pct(x.v / total), sub: money(x.v),
+      aria: CLS[x.c][0] + ": " + pct(x.v / total) + ", " + full(x.v) + ", " + x.rs.length + " matters",
+      tip: [{ text: full(x.v) + " across " + x.rs.length + " matters" }].concat(top.map(p => ({ text: p.n.slice(0, 40) + ": " + money(p.ma) + (p.ceil ? " (maximum)" : "") + (p.g ? ", about " + money(p.g) + " guaranteed" : "") }))) };
+  });
+  barChart($("#chart-b"), brs, { aria: "Massachusetts share of multistate settlements by stated destination", ticks: [0, 0.25, 0.5], tickFmt: t => Math.round(t * 100) + "%" });
+  tableOf($("#table-b"), ["Destination", "Share", "Dollars", "Matters"], list.map(x => [CLS[x.c][0], pct(x.v / total), full(x.v), String(x.rs.length)]), "Massachusetts share of multistate settlements by destination");
+}
+
+/* ---------- documents ---------- */
+function renderDocs() {
+  const all = docsSlice();
+  const strict = all.filter(d => d.lvl === "strict").length, partial = all.length - strict;
+  const yr = DATA.meta.docs_read_by_year, yrs = Object.keys(yr).filter(y => state.years === "all" || inYears(y + "-01-01"));
+  const readN = yrs.reduce((a, y) => a + yr[y], 0);
+  $("#docs-note").textContent = strict + " documents give the Attorney General sole discretion over how the payment is used, and " + partial + " more give discretion over part of it or use looser wording (" + yearsLabel() + "). The registers itemise " + readN + " documents read for this period; the earliest clause found is dated " + fdate(DATA.docs[0].d) + ".";
+  const q = state.qd.trim().toLowerCase();
+  const r = all.filter(d => (state.lvl === "all" || d.lvl === state.lvl) && (!q || (d.n + " " + d.cl).toLowerCase().indexOf(q) >= 0));
+  $("#count-d").textContent = r.length + " documents";
+  const t = $("#tbl-d"); t.replaceChildren();
+  const th = el("thead"), tr = el("tr");
+  ["Date", "Defendant or release", "Level", "Clause as read", "Links"].forEach(h => tr.appendChild(el("th", null, h)));
+  th.appendChild(tr); t.appendChild(th);
+  const tb = el("tbody");
+  r.slice(0, state.shownD).forEach(d => {
+    const row = el("tr");
+    row.appendChild(el("td", { class: "nw" }, fdate(d.d)));
+    row.appendChild(el("td", { class: "name" }, d.n.slice(0, 110)));
+    row.appendChild(el("td", null, d.lvl === "strict" ? (d.part ? "Sole discretion, part of the payment" : "Sole discretion") : "Partial"));
+    row.appendChild(el("td", { class: "clause" }, d.cl));
+    const l = el("td"); l.appendChild(link(d.u, "document", "Settlement document: " + d.n.slice(0, 80))); l.appendChild(document.createTextNode(" ")); l.appendChild(link(d.ru, "release", "Release for " + d.n.slice(0, 80))); row.appendChild(l);
+    tb.appendChild(row);
+  });
+  t.appendChild(tb);
+  $("#more-d").style.display = r.length > state.shownD ? "" : "none";
+}
+
+/* ---------- context ---------- */
+function renderBudget() {
+  const B = DATA.budget;
+  const total = sum(B.types, "total");
+  const by = p => B.types.filter(t => t.t.indexOf(p) === 0).reduce((a, t) => a + t.total, 0);
+  const rr = by("(1RN)"), trust = by("(3TN)"), fed = by("(4FN)"), direct = by("(1CS)") + by("(1CN)");
+  const gam = (B.lines.find(l => l.name.indexOf("GAMING COMMISSION") >= 0) || { total: 0 }).total;
+  $("#budget-sub").textContent = money(rr) + " of the " + money(total) + " the Comptroller's data records for the office (department AGO, every funding type) since fiscal 2015 (" + pct(rr / total) + "). That total includes trust accounts (" + money(trust) + ", which include grants paid to outside recipients and " + money(gam) + " for the Gaming Commission) and federal grants (" + money(fed) + "). Against direct appropriations plus retained revenue alone the share is " + pct(rr / (direct + rr)) + ".";
+  const fy = B.fy.filter(f => f.fy <= 2026);
+  const maxV = Math.ceil(Math.max.apply(null, fy.map(f => f.rr)) / 1e6) * 1e6;
+  const peak = fy.filter(f => f.fy < 2026).reduce((a, f) => f.rr > a.rr ? f : a, fy[0]).fy;
+  const items = fy.map(f => ({ title: "Fiscal " + f.fy + (f.fy === 2026 ? " (provisional)" : ""), total: f.rr, stack: [{ v: f.rr, cls: "c1", color: "var(--spend)", opacity: f.fy === 2026 ? 0.45 : 1 }], xlabel: "FY" + String(f.fy).slice(2) + (f.fy === 2026 ? "*" : ""), vlabel: f.fy === peak ? money(f.rr) : "",
+    aria: "Fiscal " + f.fy + ": " + full(f.rr) + " from retained revenue, " + pct(f.share) + " of office spending" + (f.fy === 2026 ? ", provisional" : ""), tip: [{ text: full(f.rr) }, { text: pct(f.share) + " of the " + money(f.all) + " recorded for the office" + (f.fy === 2026 ? ". Provisional: recent months may not be fully posted." : "") }] }));
+  colChart($("#chart-c"), items, { max: maxV, ticks: [0, maxV / 2, maxV], yFmt: v => "$" + (v / 1e6).toFixed(0) + "M", aria: "Retained-revenue spending by fiscal year", height: 230 });
+  tableOf($("#table-c"), ["Fiscal year", "Retained revenue", "All AGO spending in CTHRU", "Share"], B.fy.map(f => ["FY" + f.fy + (f.fy === 2027 ? " (to October 2026, incomplete)" : f.fy === 2026 ? " (provisional)" : ""), full(f.rr), full(f.all), pct(f.share)]), "Retained-revenue spending by fiscal year");
+  const tidy = n => { const i = n.indexOf(") "); const base = i >= 0 && n.charAt(0) === "(" ? n.slice(i + 2) : n; return base.split(" ").map(w => w === "RR" ? "RR" : w.charAt(0) + w.slice(1).toLowerCase()).join(" "); };
+  const lines = B.lines.filter(l => l.type === "(1RN)").slice(0, 3).map(l => tidy(l.name) + " " + money(l.total)).join(", ");
+  const f26 = B.fy.find(f => f.fy === 2026), f25 = B.fy.find(f => f.fy === 2025);
+  $("#budget-note").textContent = "Source: Comptroller CTHRU. Largest lines: " + lines + ". Payroll is included. *Fiscal 2026 (" + money(f26.all) + " recorded, " + Math.round(100 * (1 - f26.all / f25.all)) + "% below fiscal 2025) is provisional and shown pale; fiscal 2027 covers July to October 2026 and is off the chart. Recent months are probably not fully posted, so do not read either as a trend.";
+}
+function renderCoverage() {
+  const M = DATA.months;
+  const listed = sum(M, "listed"), rec = sum(M, "rec");
+  $("#cov-sub").textContent = listed.toLocaleString("en-US") + " releases are in the Attorney General's live listing. The Internet Archive holds " + rec + " more dated releases the listing lacks, most from the months around the office's website move. Releases before 2015 are not covered.";
+  const maxV = Math.ceil(Math.max.apply(null, M.map(m => m.listed + m.rec)) / 10) * 10;
+  const items = M.map(m => ({ title: MON[+m.m.slice(5) - 1] + " " + m.m.slice(0, 4), total: m.listed + m.rec, xlabel: m.m.slice(5) === "01" ? m.m.slice(2, 4) : "", vlabel: "",
+    stack: [{ v: m.listed, cls: "c1", color: "var(--listed)" }, { v: m.rec, cls: "c2", color: "var(--recovered)" }],
+    aria: MON[+m.m.slice(5) - 1] + " " + m.m.slice(0, 4) + ": " + m.listed + " listed, " + m.rec + " recovered",
+    tip: [{ text: m.listed + " in the live listing" }, { text: m.rec + " recovered from the Internet Archive" }] }));
+  colChart($("#chart-d"), items, { max: maxV, ticks: [0, maxV / 2, maxV], yFmt: v => String(Math.round(v)), aria: "Releases per month in the live listing and recovered from the Internet Archive", height: 200 });
+  tableOf($("#table-d"), ["Month", "In the live listing", "Recovered from the Internet Archive"], M.map(m => [m.m, String(m.listed), String(m.rec)]), "Releases per month");
+}
+function renderGrantees() {
+  const G = DATA.grantees.map(g => Object.assign({ tot: g.don + g.lob }, g));
+  const withTie = G.filter(g => g.don > 0 || g.lob > 0 || g.off > 0).length;
+  $("#gr-note").textContent = G.length + " distinct grantee names in the announcements (case, punctuation and endings such as Inc. ignored); " + withTie + " have employee donations, lobbying or an official's disclosed tie on record. The table shows no grant amounts: most announcements do not state one per grantee, and there is no comparison group of organizations that received no grant.";
+  $("#gr-source").textContent = "A tie is a record that exists, matched by exact normalized organization name. It is not a finding about any recipient, and it does not show that a grant or a settlement had anything to do with the record.";
+  const q = state.qg.trim().toLowerCase();
+  let r = G.filter(g => !q || g.n.toLowerCase().indexOf(q) >= 0);
+  const k = state.sortG.k, dir = state.sortG.dir;
+  r.sort((x, y) => (typeof x[k] === "string" ? x[k].localeCompare(y[k]) : x[k] - y[k]) * dir);
+  $("#count-g").textContent = r.length + " names";
+  const t = $("#tbl-g"); t.replaceChildren();
+  const hd = sortHead([["n", "Organization", false], ["don", "Employee donations, all years", true], ["lob", "Lobbying, all years filed", true], ["off", "Officials' disclosures", true]], state.sortG, (key, numeric) => { state.sortG = { k: key, dir: state.sortG.k === key ? -state.sortG.dir : (numeric ? -1 : 1) }; renderGrantees(); refocusSort("tbl-g", key); });
+  hd.th.appendChild(hd.tr); t.appendChild(hd.th);
+  const tb = el("tbody");
+  r.slice(0, state.shownG).forEach(g => { const row = el("tr"); row.appendChild(el("td", null, g.n)); [g.don ? full(g.don) : "-", g.lob ? full(g.lob) : "-", g.off ? String(g.off) : "-"].forEach(v => row.appendChild(el("td", { class: "n" }, v))); tb.appendChild(row); });
+  t.appendChild(tb);
+  $("#more-g").style.display = r.length > state.shownG ? "" : "none";
+}
+
+/* ---------- notes and disclosures ---------- */
+function renderNotes() {
+  const S = DATA.settlements, X = DATA.meta.excl, M = DATA.meta;
+  const W = S.filter(r => r.h > 0), noTotal = S.length - W.length;
+  const noTotalNoParts = S.filter(r => r.h <= 0 && parts(r) <= 0).length;
+  const noTotalPartsSum = sum(S.filter(r => r.h <= 0), "hm") + sum(S.filter(r => r.h <= 0), "pen") + sum(S.filter(r => r.h <= 0), "un") + sum(S.filter(r => r.h <= 0), "ag") + sum(S.filter(r => r.h <= 0), "ds") + sum(S.filter(r => r.h <= 0), "nc");
+  const a = agg(S);
+  const cit = S.filter(r => r.cit), crim = W.filter(r => r.crim), crimAll = S.filter(r => r.crim);
+  const noCrim = agg(S.filter(r => !r.crim));
+  const merg = W.filter(r => r.mer);
+  const ceilR = W.filter(r => r.ceil), suspR = W.filter(r => r.susp);
+  const ti = W.filter(r => r.ti), tiH = sum(ti, "h");
+  const noTi = agg(S.filter(r => !r.ti));
+  const tiNames = ti.slice().sort((x, y) => y.h - x.h).slice(0, 6).map(r => r.n.replace(/;/g, ",").slice(0, 34) + " (" + r.d.slice(0, 4) + ", " + money(r.h) + ")").join("; ");
+  const small = W.filter(r => r.h < 100000).length;
+  const big1 = W.slice().sort((x, y) => y.h - x.h)[0], noBig = agg(S.filter(r => r.id !== big1.id));
+  const ms = DATA.multistate, msTotal = sum(ms, "ma");
+  const ceilM = ms.filter(r => r.ceil), yrsM = ms.filter(r => r.yrs), munM = ms.filter(r => r.mun), gM = ms.filter(r => r.g);
+  const top2r = ms.slice().sort((x, y) => y.ma - x.ma).slice(0, 2);
+  const top2 = top2r.map(r => r.n.replace(/;/g, ",").slice(0, 60) + " (" + money(r.ma) + ")").join(" and ");
+  const rec = sum(DATA.months, "rec"), listed = sum(DATA.months, "listed");
+  const win = DATA.months.filter(m => m.m >= "2017-09" && m.m <= "2018-03").reduce((s, m) => s + m.rec, 0);
+  const bl = DATA.blind, fl = Object.keys(bl);
+  const both = fl.reduce((s, f) => s + (bl[f].agree || 0) + (bl[f].differ || 0), 0), agree = fl.reduce((s, f) => s + (bl[f].agree || 0), 0);
+  const cats = fl.filter(f => f !== "headline_dollars");
+  const catAny = cats.reduce((s, f) => s + (bl[f].agree || 0) + (bl[f].differ || 0) + (bl[f]["one reader blank"] || 0), 0), catOne = cats.reduce((s, f) => s + (bl[f]["one reader blank"] || 0), 0);
+  const B = DATA.budget, byT = p => B.types.filter(t => t.t.indexOf(p) === 0).reduce((s, t) => s + t.total, 0);
+  const gam = (B.lines.find(l => l.name.indexOf("GAMING COMMISSION") >= 0) || { total: 0 }).total;
+  const strict = DATA.docs.filter(d => d.lvl === "strict").length, partial = DATA.docs.length - strict;
+  const docsEarly = Object.keys(M.docs_read_by_year).filter(y => +y < 2020).reduce((s, y) => s + M.docs_read_by_year[y], 0);
+  const R = REPO + "/blob/main/data/";
+  const items = [
+    ["What an announced total is.", "The dollar figure a release states for a settlement, judgment or order. It is not money collected or delivered. It can include relief the office values (debt forgiveness, loan principal reduction) and amounts a court ordered that may not have been paid. Where a release says \"more than $X\" the register records X; \"nearly\" and \"approximately\" are recorded at the stated figure. Where a single-state release says \"up to $X\" and states an amount payable, the payable amount is recorded; where it states none, X is recorded: " + ceilR.length + " counted totals (" + money(sum(ceilR, "h")) + ") are described as \"up to\" figures. Penalties a court suspended pending compliance are not subtracted: " + suspR.length + " counted totals (" + money(sum(suspR, "h")) + ") mention a suspended amount. Multistate amounts are recorded at the stated maximum (note 8)."],
+    ["What is counted.", "Single-state settlements, judgments, consent decrees, assurances of discontinuance, restitution orders and court-ordered criminal restitution announced from January 2015 to October 2026 whose release or document states a total: " + W.length + " of the " + S.length + " counted rows. The other " + noTotal + " state parts but no total, or no dollar amount at all (" + noTotalNoParts + " rows); the " + (noTotal - noTotalNoParts) + " that state parts add up to " + money(noTotalPartsSum) + " and sit outside the shares, so leaving them out raises the no-split share. Left out of the counts, with the reason in each register's status column: " + X.first_failed + " first-sweep readings that failed the script's quote check (" + money(X.first_failed_h) + " of stated totals), " + (X.first_dup + X.audit_dup_ss) + " repeat announcements of single-state matters already counted, and " + X.audit_dup_ms + " repeat of a multistate matter. Merger approval agreements with dollar commitments (" + merg.length + " rows, " + money(sum(merg, "h")) + ") are counted. " + crimAll.length + " counted rows are criminal cases (guilty pleas, convictions and sentences, mostly of individuals) in which the release states a restitution, forfeiture or fine amount: " + crim.length + " with a stated total, " + money(sum(crim, "h")) + " of " + money(a.H) + " announced. Unticking \"Include criminal cases\" moves the no-split share from " + pct(a.split / a.H) + " to " + pct(noCrim.split / noCrim.H) + ". These figures supersede earlier versions in the repository notes; the audit note lists the corrections.", [["first-sweep register", R + "single-state-settlements-destinations.tsv"], ["audit register", R + "audit-releases-read.tsv"], ["criminal cases flagged", R + "criminal-cases-flagged.tsv"]]],
+    ["What was read, and what was not.", "The first sweep read " + X.first_read + " releases in the single-state pass (" + X.first_counted + " counted settlements; the rest are reports, rates or repeats), taken from 713 releases chosen by title and aimed at headlines of $1 million or more, and " + X.multi_read + " releases flagged as multistate (" + X.multi_settle + " are multistate settlements; the others are single-state matters, now read in the audit, or not settlements). The audit then read " + X.audit_read + " further releases whose text has an amount of $100,000 or more in a sentence with settlement or payment language, including releases recovered from the Internet Archive and the single-state matters the multistate test had flagged. Settlements under $100,000 were not systematically searched for: " + small + " counted settlements fall below that figure because their releases mention a larger amount elsewhere. Releases that state no dollar figure have nothing to count. Settlements the office never announced are not in the public record, and this repository found no public count of the office's settlements."],
+    ["Administrative citations.", cit.length + " counted rows are citations: penalties and restitution the office assessed by citation, not negotiated settlements. They are included unless you untick the box."],
+    ["Destination categories.", "To the harmed: refunds, restitution, bill credits and back wages the release says go to consumers, workers or other victims. Non-cash relief: valued relief such as loan principal reduction. Penalties, fines, fees or costs: paid to the Commonwealth or the office and called one of those in the release. Paid to the Commonwealth, purpose not stated: the release names the state as payee and gives no use (the first pass had filed these as penalties, and the registers now keep them apart). State agencies: money returned to a state agency for its own losses, mostly MassHealth. Designated: a named fund, program or organization. No dollar split: the announced total minus every amount the release assigns above. Amounts the release calls \"expected to exceed\" are recorded at the stated figure."],
+    ["What \"no dollar split\" means.", "It measures what the announcement leaves out. The money may have gone anywhere the settlement allows, including to the harmed, and some releases say it goes to consumers, drivers or homeowners without giving an amount; those dollars are counted here as unassigned. " + a.none + " settlements (" + pct(a.noneH / a.H) + " of announced totals) state no destination amount at all; " + pct((a.split - a.noneH) / a.H) + " is the unassigned remainder of settlements that split part of the money. It includes announced \"relief\" whose form, a forgiven balance or a refund, the release does not split, so it is not counted as non-cash relief. A settlement document can state a split the release omits; the documents were read separately (see \"Who decides\"). The single largest settlement, " + big1.n.replace(/;/g, ",").slice(0, 40) + " (" + money(big1.h) + "), is " + pct0(big1.h / a.H) + " of announced totals; without it \"stated to the harmed\" is " + pct(noBig.hm / noBig.H) + " and \"no dollar split\" is " + pct(noBig.split / noBig.H) + ". " + a.rec + " settlements have stated amounts within 3% of their total (" + a.exact + " exactly)."],
+    ["Readings with a caveat.", ti.length + " counted totals, " + money(tiH) + " or " + pct(tiH / a.H) + " of announced totals, are taken from the release title because the body text does not state the total. The largest: " + tiNames + ". Where a release calls restitution \"expected to exceed\" an amount, that amount is a projection and a floor, not a paid amount. Without these rows, \"stated to the harmed\" is " + pct(noTi.hm / noTi.H) + " (now " + pct(a.hm / a.H) + ") and \"no dollar split\" is " + pct(noTi.split / noTi.H) + " (now " + pct(a.split / a.H) + "). One of them, a $13.5 million judgment, rests on a release page that carries no body text at all. Some releases state parts that are \"up to\" figures; the register's headline-quote column shows each one."],
+    ["Multistate settlements.", "Only matters where the release states a Massachusetts amount are counted: " + ms.length + " matters, " + money(msTotal) + ". At least " + X.multi_no_ma + " further multistate matters state no Massachusetts amount and are left out, so the total is a floor. National totals are excluded. Repeat announcements of one matter are counted once. Amounts are as announced and are not discounted. " + ceilM.length + " matters are ceilings, not commitments (" + ceilM.map(r => r.n.split(";")[0].slice(0, 30)).join(", ") + "), together " + money(sum(ceilM, "ma")) + " or " + pct0(sum(ceilM, "ma") / msTotal) + " of the total; the Meta settlement is described as \"up to\" its amount, of which about " + money(sum(gM, "g")) + " is described as guaranteed over ten years, and awaits court approval. Counting only that guaranteed part would lower the total by " + money(sum(gM, "ma") - sum(gM, "g")) + ". " + yrsM.length + " matters, " + money(sum(yrsM, "ma")) + " or " + pct0(sum(yrsM, "ma") / msTotal) + ", are paid over 7 to 18 years. " + munM.length + " opioid matters, " + money(sum(munM, "ma")) + " or " + pct0(sum(munM, "ma") / msTotal) + ", state the amount for Massachusetts together with its municipalities or local governments, so the figure is not the state's share alone. The two largest matters, " + top2 + ", account for " + pct0(sum(top2r, "ma") / msTotal) + " of the total, so read the shares with them in view."],
+    ["Documents.", "\"Sole discretion\" counts documents with the standard clause that lets the Attorney General use or distribute the payment in any amount, allocation or apportionment. \"Partial\" means discretion over part of the payment or looser wording. " + strict + " and " + partial + " rows are listed across all years. Each row is one settlement or release, not always one distinct document: Uber and Lyft are two settlements covered by one agreement, so the " + strict + " sole-discretion rows rest on " + (strict - 1) + " distinct documents. They come from " + M.readable_documents + " readable items: 43 settlements from the first sweep, each counted once even where it has several documents, and 127 documents from the second sweep. The earliest clause found is dated " + fdate(DATA.docs[0].d) + "; only " + docsEarly + " documents before 2020 are itemised in the registers, so earlier years are largely unread, not clause-free. In a few rows (for example Collegium, and Adroit, $2 million of $5 million) the discretion covers only part of the payment. Documents of multistate settlements where another state's attorney general holds the discretion are excluded. Scanned documents were read with local OCR, and garbled text can hide a clause, so the counts are floors. A clause shows who may decide, not how the money was used."],
+    ["Office spending.", "Comptroller CTHRU data, department AGO, fiscal 2015 through October 2026, payroll included. The office-spending total behind the share is every payment recorded under department AGO across all funding types: direct appropriations (" + money(byT("(1CS)") + byT("(1CN)")) + "), retained revenue (" + money(byT("(1RN)")) + "), trust accounts (" + money(byT("(3TN)")) + ", which include payments to outside recipients and " + money(gam) + " for the Gaming Commission, not settlement money), federal grants (" + money(byT("(4FN)")) + ") and capital. It is not the office's operating budget alone. \"Retained revenue\" is the state's classification for revenue an agency may keep and spend; the data does not say which settlements fed each line. The chart shows only the retained-revenue part. Fiscal 2026 is provisional and fiscal 2027 is July to October 2026 only."],
+    ["Archive coverage.", "The Attorney General's live listing holds " + listed.toLocaleString("en-US") + " releases from January 2015. The Internet Archive holds " + rec + " more dated releases the listing lacks (" + win + " from September 2017 to March 2018), plus " + M.recovered_undated + " captured pages that are undated or failed to download. Releases the listing lacks and the Internet Archive never captured are unread, and releases before 2015 are not covered. The office retitles some releases after publication, so matching by title alone overstates what is missing; the register marks the retitled copies.", [["list of recovered releases", R + "releases-missing-from-live-listing.tsv"]]],
+    ["Political-money ties.", "Employee donations are contributions by individuals who list the organization as their employer, matched by exact name; they are not the organization's own money. Lobbying is what the organization paid lobbyists, as filed, over all years the filings cover. Officials' disclosures counts records in which an official lists the organization, not dollars. Names are matched after ignoring case, punctuation and endings such as Inc., so the count of distinct names is a normalized count. Two organizations with the same name would be confused."],
+    ["How reliable the readings are.", "A model read each release and quoted its source. A script checked that every quote appears in the release and every amount appears in its quote. A second reader, given no earlier answers, re-read " + M.blind_n + " random releases: the two matched on " + agree + " of " + both + " amounts both recorded. Of " + catAny + " category amounts recorded by at least one reader, " + catOne + " were recorded by one reader only. The comparison does not show which direction the stated shares would move. The readings were not checked against the settlement documents themselves, except as noted.", [["second-reader comparison", R + "blind-reread-comparison.tsv"]]],
+    ["Figures typed in by hand.", "A few numbers in the notes are not computed from the data: the 713 releases chosen by title and the 43 and 127 in note 9, the 7 to 18 years and the Meta guarantee in note 8 (taken from the registers' own quotes), and the $13.5 million judgment in note 7 (named from a register note)."]
+  ];
+  const ol = $("#notes"); ol.replaceChildren();
+  items.forEach((it, i) => {
+    const li = el("li", { id: "fn-" + (i + 1), tabindex: "-1" });
+    li.appendChild(el("b", { class: "t" }, it[0] + " "));
+    li.appendChild(document.createTextNode(it[1]));
+    if (it[2]) { li.appendChild(document.createTextNode(" Data: ")); it[2].forEach((l, j) => { if (j) li.appendChild(document.createTextNode(", ")); li.appendChild(link(l[1], l[0])); }); li.appendChild(document.createTextNode(".")); }
+    ol.appendChild(li);
+  });
+  const REQ = ["Disbursement accounting where the Attorney General allocates the payment", "Local Consumer Aid Fund balance and disbursements", "Settlement trust accounts: deposits and disbursements", "Grant programs funded by settlements: awards, scoring and grantee reports", "Claims administrators and trustees: contracts, fees and reports", "Unclaimed and residual restitution policy and records", "Payroll charged to the Attorney General's trust accounts: authority and accounting", "Retained-revenue lines: which settlements fed them", "Opioid Recovery and Remediation Fund awards and contracts", "Account-level ledgers from the Comptroller"];
+  const rq = $("#reqs"); rq.replaceChildren(); REQ.forEach(r => rq.appendChild(el("li", null, r)));
+  const fl2 = $("#foot-links"); fl2.replaceChildren();
+  fl2.appendChild(document.createTextNode("Sources: Attorney General releases and settlement documents on mass.gov, the Internet Archive, the Comptroller's CTHRU spending data, and campaign-finance, lobbying and ethics disclosure files. Retrieved __RETRIEVED__. "));
+  [["Repository", REPO], ["All data files", REPO + "/tree/main/data"], ["Completeness audit", REPO + "/blob/main/findings/05-completeness-audit.md"], ["Public records requests", REPO + "/blob/main/PUBLIC-RECORDS-REQUESTS.md"]].forEach((l, i) => { if (i) fl2.appendChild(document.createTextNode(" · ")); fl2.appendChild(link(l[1], l[0])); });
+}
+
+/* ---------- tabs and wiring ---------- */
+const RENDER = { overview: renderOverview, settlements: renderSettlements, multistate: renderMulti, documents: renderDocs, context: () => { renderBudget(); renderCoverage(); renderGrantees(); }, notes: () => {} };
+function showTab(id, focus) {
+  if (TABS.indexOf(id) < 0) id = "overview";
+  state.tab = id;
+  TABS.forEach(t => {
+    const btn = $("#t-" + t), panel = document.getElementById(t === "notes" ? "notes-tab" : t);
+    const on = t === id;
+    btn.setAttribute("aria-selected", on ? "true" : "false"); btn.tabIndex = on ? 0 : -1;
+    panel.classList.toggle("active", on);
+  });
+  $("#filters").style.display = FILTERED.indexOf(id) >= 0 ? "" : "none";
+  RENDER[id]();
+  if (focus) $("#t-" + id).focus();
+}
+function renderCurrent() { renderHero(); RENDER[state.tab](); }
+function openNote(fnId) {
+  if (state.tab !== "notes") state.back = { tab: state.tab, y: window.scrollY, from: document.activeElement };
+  showTab("notes");
+  const li = document.getElementById(fnId);
+  if (!li) return;
+  document.querySelectorAll("#notes li.hl").forEach(x => x.classList.remove("hl"));
+  li.classList.add("hl"); li.scrollIntoView({ block: "center" }); li.focus({ preventScroll: true });
+  $("#note-back").hidden = !state.back;
+  try { history.replaceState(null, "", "#" + fnId); } catch (err) { /* file:// pages may refuse */ }
+}
+$("#note-back").addEventListener("click", () => {
+  const b = state.back; if (!b) return;
+  state.back = null; $("#note-back").hidden = true;
+  showTab(b.tab); window.scrollTo(0, b.y);
+  if (b.from && document.contains(b.from) && b.from.focus) b.from.focus({ preventScroll: true });
+});
+document.addEventListener("click", e => {
+  const a = e.target.closest ? e.target.closest("a[href^='#fn-']") : null;
+  if (a) { e.preventDefault(); openNote(a.getAttribute("href").slice(1)); }
+});
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("button[data-tab]"); if (b) showTab(b.getAttribute("data-tab")); });
+$("#tabs").addEventListener("keydown", e => {
+  const i = TABS.indexOf(state.tab);
+  if (e.key === "ArrowRight") { e.preventDefault(); showTab(TABS[(i + 1) % TABS.length], true); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); showTab(TABS[(i + TABS.length - 1) % TABS.length], true); }
+  else if (e.key === "Home") { e.preventDefault(); showTab(TABS[0], true); }
+  else if (e.key === "End") { e.preventDefault(); showTab(TABS[TABS.length - 1], true); }
+});
+const resetPaging = () => { state.shownS = 25; state.shownD = 15; };
+$("#f-set").addEventListener("change", e => { state.set = e.target.value; resetPaging(); renderCurrent(); });
+$("#f-years").addEventListener("change", e => { state.years = e.target.value; resetPaging(); renderCurrent(); });
+$("#f-cit").addEventListener("change", e => { state.cit = e.target.checked; resetPaging(); renderCurrent(); });
+$("#f-crim").addEventListener("change", e => { state.crim = e.target.checked; resetPaging(); renderCurrent(); });
+$("#f-reset").addEventListener("click", () => { state.set = "all"; state.years = "all"; state.cit = true; state.crim = true; resetPaging(); $("#f-set").value = "all"; $("#f-years").value = "all"; $("#f-cit").checked = true; $("#f-crim").checked = true; renderCurrent(); });
+$("#q-s").addEventListener("input", e => { state.qs = e.target.value; state.shownS = 25; renderSettlements(); });
+$("#more-s").addEventListener("click", () => { state.shownS += 25; renderSettlements(); });
+$("#f-lvl").addEventListener("change", e => { state.lvl = e.target.value; state.shownD = 15; renderDocs(); });
+$("#q-d").addEventListener("input", e => { state.qd = e.target.value; state.shownD = 15; renderDocs(); });
+$("#more-d").addEventListener("click", () => { state.shownD += 15; renderDocs(); });
+$("#q-g").addEventListener("input", e => { state.qg = e.target.value; state.shownG = 25; renderGrantees(); });
+$("#more-g").addEventListener("click", () => { state.shownG += 25; renderGrantees(); });
+document.querySelectorAll("[data-twin]").forEach(b => b.addEventListener("click", () => {
+  const id = b.getAttribute("data-twin"), chart = document.getElementById(id), table = document.getElementById(id.replace("chart", "table"));
+  const on = b.getAttribute("aria-pressed") !== "true";
+  b.setAttribute("aria-pressed", on ? "true" : "false");
+  chart.hidden = on; table.hidden = !on;
+  if (!on) RENDER[state.tab]();
+}));
+let rt, lastW = window.innerWidth;
+window.addEventListener("resize", () => { if (window.innerWidth === lastW) return; clearTimeout(rt); rt = setTimeout(() => { lastW = window.innerWidth; RENDER[state.tab](); }, 150); });
+window.addEventListener("beforeprint", () => { document.body.classList.add("printing"); TABS.forEach(t => RENDER[t]()); });
+window.addEventListener("afterprint", () => { document.body.classList.remove("printing"); RENDER[state.tab](); });
+renderNotes(); renderHero();
+const startHash = (location.hash || "").slice(1);
+if (startHash.indexOf("fn-") === 0) openNote(startHash); else showTab(TABS.indexOf(startHash) >= 0 ? startHash : "overview");
+</script>
+</body>
+</html>

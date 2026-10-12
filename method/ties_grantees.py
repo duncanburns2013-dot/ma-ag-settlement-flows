@@ -6,7 +6,7 @@ import sys
 
 H = os.environ.get("AG_SWEEP_WORK", "work")  # scratch folder for downloads and intermediate files
 sys.path.insert(0, H)
-sys.path.insert(0, os.environ.get("LEDGER_PROJECT", "."))
+sys.path.insert(0, os.environ.get("MATCH_TABLES_DIR", "."))
 import ties  # noqa: E402
 
 man = {r["release_id"]: r for r in csv.DictReader(open(os.path.join(H, "grants_read", "manifest.tsv"), encoding="utf-8"), delimiter="\t")}

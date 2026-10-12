@@ -3,9 +3,8 @@ import csv
 import os
 import sys
 
-os.chdir(os.environ.get("LEDGER_PROJECT", "."))
-sys.path.insert(0, ".")
-from pipeline.cthru import build_url, fetch_json  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cthru import build_url, fetch_json  # noqa: E402
 
 D = os.path.join(os.environ.get("AG_REPO", "."), "data")
 W = "department_code='AGO' AND budget_fiscal_year>=2015"

@@ -7,7 +7,7 @@ import sys
 
 H = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, H)
-sys.path.insert(0, os.environ.get("LEDGER_PROJECT", "."))
+sys.path.insert(0, os.environ.get("MATCH_TABLES_DIR", "."))
 import ties  # noqa: E402
 
 rows = []

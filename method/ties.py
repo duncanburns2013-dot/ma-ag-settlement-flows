@@ -1,11 +1,11 @@
-"""Political-money ties for a list of recipients, using the ledger's own matching (exact normalized name = confirmed)."""
+"""Political-money ties for a list of recipients: exact normalized name = confirmed match. Needs local donation, lobbying and disclosure tables and matcher modules that are not published in this repository."""
 import collections
 import csv
 import json
 import os
 import sys
 
-R = os.environ.get("LEDGER_PROJECT", ".")  # the ledger project checkout these scripts ran inside
+R = os.environ.get("MATCH_TABLES_DIR", ".")  # folder holding the matching tables and modules (not published here)
 os.chdir(R)
 sys.path.insert(0, ".")
 from pipeline import build_holdings, build_lobbying  # noqa: E402
@@ -26,7 +26,7 @@ def run(recipients, label, outfile):
     match = make_matcher(companies)
     res = {f"r{i}": {"ocpf": 0.0, "fec": 0.0, "n_gifts": 0, "lob_firm": 0.0, "lob_inhouse": 0.0, "lob_years": set(), "hold": 0, "hold_officials": set()} for i in range(len(keys))}
 
-    # donations: confirmed, cash, no memo, not pass-through (the ledger's filter)
+    # donations: confirmed, cash, no memo, not pass-through
     with open("data/donations.csv", encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
             cid, tier = match(r["employer"])

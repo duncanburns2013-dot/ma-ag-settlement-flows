@@ -45,7 +45,7 @@ for fn in sorted(glob.glob(os.path.join(H, "agent_out", "A*.csv"))):
 print(f"first-sweep single-state settlements counted (>= $1M tier): {len(R)}")
 
 
-PEN = re.compile(r"penalt|fines?|fees?|costs?|civil|investigat|assess", re.I)
+PEN = re.compile(r"penalt|\bfines?\b|\bfees?\b|\bcosts?\b|civil|investigat|assess", re.I)
 
 
 def state_split(S):
