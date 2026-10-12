@@ -7,12 +7,14 @@ Boston Medical Center		125724	72048	812	1195245	0	10	16	6
 Massachusetts Housing and Shelter Alliance		1625	0	15	931000	28981	16	7	1
 East Boston Neighborhood Health Center		36214	2605	154	864350	0	15	8	2
 St. Mary’s Center for Women & Children		3225	0	25	828000	2364	17	0	0
+YMCA of Greater Boston		6877	894	42	757350	0	13	3	3
 Edward M. Kennedy Community Health Center		2077	0	13	743550	0	15	3	1
 Jewish Family & Children’s Service		430	172	7	711439	0	15	0	0
 Brookline Community Mental Health Center, Inc.		250	0	2	670750	7042	12	2	1
 Greater Boston Legal Services		27346	8069	296	536794	78796	14	6	4
 Massachusetts General Hospital		107273	211593	949	240000	0	4	69	21
 Lowell General Hospital		44464	16480	180	495300	0	12	1	1
+Eliot Community Human Services		4083	1400	31	0	526386	2	3	2
 International Institute of New England		4215	1500	18	513248	0	12	0	0
 Greater Lawrence Family Health Center		5214	2750	47	463750	0	9	22	5
 Tufts University		237995	220251	1802	0	0	0	14	8
@@ -21,7 +23,7 @@ Massachusetts Association for Community Action		200	0	1	412518	7200	9	0	0
 Community Servings, Inc.		1225	0	9	320000	40270	6	0	0
 Justice Resource Institute		22121	2240	119	316214	0	12	4	4
 Massachusetts Immigrant & Refugee Advocacy Coalition		450	0	6	218783	74964	10	0	0
-The Massachusetts Association for Community Action (MASSCAP)		1200	0	6	227288	14360	5	0	0
+Massachusetts Association for Community Action (MASSCAP)		1200	0	6	227288	14360	5	0	0
 Caring Health Center		5275	500	24	227550	0	5	1	1
 Louis D. Brown Peace Institute		600	250	8	223909	0	13	3	1
 City of Everett		61320	1450	368	161900	0	4	0	0
@@ -37,6 +39,8 @@ Boston Children’s Hospital		72698	52013	620	0	0	0	40	16
 Montachusett Veterans Outreach Center		1100	0	7	108000	0	6	0	0
 Neighborhood of Affordable Housing		700	0	4	100000	0	4	0	0
 Behavioral Health Network		5596	1335	47	81000	0	3	18	6
+Community Rowing		1000	250	4	86000	0	5	0	0
+Citizen Schools		2250	4450	20	73200	0	5	0	0
 City of Lowell		35959	29592	296	0	0	0	0	0
 Signature Healthcare Brockton Hospital		1450	0	4	54600	0	1	0	0
 City of Somerville		43817	11667	287	0	0	0	4	3
@@ -51,22 +55,40 @@ Middlesex Community College		22592	12745	169	0	0	0	11	2
 UTEC		10275	4100	53	0	19108	2	0	0
 Medford Public Schools		26447	150	158	0	0	0	0	0
 Whittier Street Health Center		4755	4100	27	16000	0	2	0	0
+City of Lynn		23595	250	157	0	0	0	0	0
+City of Chelsea		18082	4710	143	0	0	0	0	0
 Health Care Without Walls		8450	4250	20	10000	0	4	0	0
 City of New Bedford		19739	2750	153	0	0	0	0	0
 Massachusetts Coalition to Prevent Gun Violence		145	0	2	1050	20000	3	0	0
 City of Medford		20182	550	130	0	0	0	0	0
+Boys & Girls Clubs of Boston		5450	13050	35	0	0	0	0	0
 Victory Programs		6781	1500	35	10000	0	2	0	0
 Lynn Community Health Center		9000	8300	66	0	0	0	11	6
 Lowell Public Schools		14828	1600	131	0	0	0	0	0
+City of Fitchburg		15949	130	63	0	0	0	0	0
+YWCA of Western Massachusetts		500	500	2	13778	0	4	2	1
 Barnstable		2200	12400	21	0	0	0	0	0
+Everett Public Schools		14203	0	113	0	0	0	0	0
 Gándara Mental Health Center		3700	0	21	10000	0	4	0	0
+The Brockton Neighborhood Health Center		3925	8850	27	0	0	0	1	1
+City of Gardner		11464	700	59	0	0	0	0	0
+Middlesex Sheriff’s Office		9051	2342	102	0	0	0	0	0
 Brockton Public Schools		10120	427	118	0	0	0	3	1
+City of Newburyport		10185	100	81	0	0	0	0	0
 Open Sky Community Services		9731	300	42	0	0	0	6	2
 Malden Public Schools		6203	3460	71	0	0	0	0	0
+Black Ministerial Alliance of Greater Boston		0	0	0	9540	0	2	0	0
+Island Grown Initiative		4863	4500	18	0	0	0	0	0
 Aspire Health Alliance		525	8650	14	0	0	0	6	2
+Gandara Center, Inc.		3100	250	32	5000	0	1	0	0
+Town of Randolph		6456	1350	54	0	0	0	0	0
 Northeast Legal Aid		7182	0	34	0	0	0	1	1
-Waltham Boys and Girls Club		0	7000	2	0	0	0	0	0
+Mystic River Watershed Association		1300	0	7	0	5841	1	0	0
+Waltham Boys & Girls Club		0	7000	2	0	0	0	0	0
 Berkshire Medical Center		2746	3977	68	0	0	0	7	1
+LEAP for Education Inc		6675	0	24	0	0	0	2	1
+Boys & Girls Club of Boston		5065	1500	19	0	0	0	7	2
+Amherst Survival Center		6201	295	28	0	0	0	0	0
 MetroWest Legal Services		2022	250	73	0	3748	2	0	0
 Cambridge Health Alliance Foundation		5900	100	12	0	0	0	0	0
 Valley Opportunity Council		5950	0	19	0	0	0	1	1
@@ -75,107 +97,181 @@ Steppingstone Incorporated		2800	3000	14	0	0	0	3	1
 Greater Lawrence Technical School		2580	3200	19	0	0	0	0	0
 Gloucester Public Schools		3618	2010	44	0	0	0	0	0
 Just-A-Start		4053	1184	61	0	0	0	0	0
+United Way		4685	550	48	0	0	0	0	0
 Salem Public Schools		4475	750	33	0	0	0	4	2
 Westfield Public Schools		4059	800	28	0	0	0	0	0
+Boys & Girls Club of Worcester		4400	350	47	0	0	0	0	0
 Marblehead Public Schools		3475	1250	10	0	0	0	0	0
+MCLA		4015	485	69	0	0	0	0	0
 Boys and Girls Club of Dorchester		2325	2150	15	0	0	0	0	0
 Madison Park Development Corporation		3446	750	33	0	0	0	0	0
+City of Easthampton		4189	0	18	0	0	0	0	0
+Save the Harbor Save the Bay		4130	0	38	0	0	0	0	0
+Citizens for Citizens		3340	750	26	0	0	0	0	0
 Town of Salisbury		3120	700	25	0	0	0	0	0
 Town of Palmer		2690	1000	9	0	0	0	0	0
 REACH		3600	0	19	0	0	0	0	0
 Veterans Legal Services		350	350	5	0	2850	2	5	2
+Piers Park Sailing Center		3325	0	31	0	0	0	0	0
 Community Action Pioneer Valley		3270	0	120	0	0	0	0	0
+YMCA of the North Shore		2396	823	17	0	0	0	3	2
 Town of Dartmouth		3172	0	26	0	0	0	1	1
 City of Marlborough		2845	250	39	0	0	0	0	0
 Casa Myrna		2250	800	14	0	0	0	1	1
+New North Citizens’ Council		1550	1500	12	0	0	0	0	0
+Attleboro YMCA		100	2800	2	0	0	0	0	0
+Essex County Sheriff’s Department		2775	0	15	0	0	0	0	0
 Child Care of the Berkshires		2750	0	8	0	0	0	0	0
 Weymouth Police Department		2750	0	15	0	0	0	0	0
 South Coastal Counties Legal Services		2730	0	20	0	0	1	0	0
+Town of Somerset		1425	1250	13	0	0	0	0	0
+Inquilinos Boricuas en Accion		2625	0	19	0	0	0	0	0
+Russian Community Association of Massachusetts		2500	0	3	0	0	0	0	0
 Plymouth County District Attorney’s Office		2450	0	15	0	0	0	0	0
 Chelsea Public Schools		2434	0	52	0	0	0	0	0
 Beverly Public Schools		1825	550	16	0	0	0	0	0
 New Bedford		2230	0	10	0	0	0	0	0
 Auburn Public Schools		1945	275	9	0	0	0	0	0
 Braintree Public Schools		2095	0	22	0	0	0	0	0
-Boys and Girls Club of Greater Salem		1475	500	5	0	0	0	1	1
+La Alianza Hispana		2060	0	14	0	0	0	0	0
+Hyde Square Task Force, Inc.		2048	0	16	0	0	0	0	0
+Boys & Girls Club of Greater Salem		1475	500	5	0	0	0	1	1
 Barnstable Public Schools		1622	300	22	0	0	0	2	1
 IBA – Inquilinos Boricuas en Accion		1775	100	9	0	0	0	0	0
 Collaborative for Educational Services		1215	655	24	0	0	0	5	2
 Martha’s Vineyard Community Services, Inc.		1650	200	7	0	0	0	4	1
 South Shore YMCA		1600	250	7	0	0	0	0	0
+Quabbin Mediation, Inc		1400	400	19	0	0	5	0	0
+North Shore Community Development Coalition, Inc.		1750	0	3	0	0	0	0	0
 Revere		1735	0	14	0	0	0	0	0
 Maverick Landing Community Services		1405	310	48	0	0	0	0	0
 Longmeadow Public Schools		1608	30	15	0	0	0	0	0
 Old Colony YMCA		1630	0	16	0	0	0	7	4
+Old Colony Y		1375	250	5	0	0	0	1	1
 Pembroke		1575	0	8	0	0	0	0	0
+Mystic Valley YMCA		1550	0	4	0	0	0	0	0
 Greater Brockton Center for Dispute Resolution		1535	0	13	0	0	0	0	0
+Youth Enrichment Services		1509	0	19	0	0	0	0	0
 Martha’s Vineyard Public Schools		1500	0	3	0	0	0	2	1
+Hancock Shaker Village		1500	0	8	0	0	0	0	0
 Clarendon Early Education Services, Inc.		1475	0	10	0	0	0	0	0
 Mental Health Association		1450	0	4	0	0	0	0	0
 Peer Health Exchange		125	1275	5	0	0	0	0	0
+All Out Adventures		1387	0	61	0	0	0	0	0
+The Food Project		870	500	7	0	0	0	0	0
+Family and Community Resources, Inc		900	450	18	0	0	0	0	0
+West End House		1345	0	7	0	0	0	0	0
 Chelmsford		1250	0	3	0	0	0	0	0
 Bristol County District Attorney’s Office		1250	0	5	0	0	0	0	0
+Diman Regional Vocational Technical High School		1250	0	4	0	0	0	0	0
 GreenRoots		1225	0	12	0	0	0	2	1
 Rian Immigrant Center		1200	0	14	0	0	0	3	2
 Center for Teen Empowerment		905	293	19	0	0	0	0	0
 Medford		1195	0	10	0	0	0	0	0
+Massachusetts College of Liberal Arts		769	387	37	0	0	0	7	2
 North Andover Public Schools		1125	0	15	0	0	0	0	0
 Merrimack Valley YMCA		1083	0	9	0	0	0	5	2
 Agawam Public Schools		681	400	21	0	0	0	0	0
 Newburyport		1075	0	10	0	0	0	0	0
 Northwestern District Attorney’s Office		1050	0	8	0	0	0	0	0
 Worcester County District Attorney’s Office		1025	0	5	0	0	0	0	0
+REACH Beyond Domestic Violence		0	1000	1	0	0	0	3	1
 Chelsea Collaborative		952	0	12	0	0	0	0	0
 Belchertown Public Schools		867	0	6	0	0	0	0	0
 Charles River Community Health Center		850	0	4	0	0	0	0	0
 Hull Public Schools		850	0	6	0	0	0	0	0
+Regional Environmental Council		500	350	10	0	0	0	0	0
 Zumix		840	0	13	0	0	0	0	0
 South Shore Community Action Council		300	500	3	0	0	0	5	2
 New Bedford Police Department		750	0	9	0	0	0	0	0
+Sociedad Latina		750	0	6	0	0	0	0	0
+Boys & Girls Clubs of Stoneham & Wakefield		750	0	2	0	0	0	0	0
+Mill City Grows		730	0	11	0	0	0	4	2
 Easthampton		725	0	6	0	0	0	0	0
 Groundwork Lawrence		411	250	14	0	0	0	0	0
+Town of Rutland		459	150	8	0	0	0	0	0
+Youth Opportunities Unlimited		600	0	4	0	0	0	0	0
+Girls Incorporated of Greater Lowell		600	0	4	0	0	0	1	1
+Hockomock Area YMCA		350	250	5	0	0	0	0	0
+Pleasant Bay Community Boating		600	0	4	0	0	0	1	1
+Martin Luther King Jr Family Services		575	0	4	0	0	0	0	0
 MetroWest Mediation Services		50	500	2	0	0	0	0	0
 Bellingham		550	0	2	0	0	0	0	0
 Holyoke		550	0	6	0	0	0	0	0
+MetroWest YMCA		550	0	7	0	0	0	2	1
 Home Base Program		0	500	1	0	0	0	0	0
 Russian Community Association of MA		500	0	2	0	0	0	0	0
 Essex District Attorney’s Office		475	0	5	0	0	0	0	0
+Coastal Foodshed Inc.		475	0	5	0	0	0	7	1
 Mothers for Justice and Equality		450	0	3	0	0	0	0	0
 Berkshire County Regional Housing Authority		422	0	4	0	0	0	0	0
 Green Cambridge		400	0	3	0	0	0	0	0
 Boys & Girls Clubs		250	150	3	0	0	0	0	0
+Building Pathways, Inc.		400	0	5	0	0	0	0	0
+All Dorchester Sports & Leadership		400	0	4	0	0	0	0	0
 Town of Norton		380	0	6	0	0	0	4	1
 Worcester Community Housing Resources, Inc.		350	0	2	0	0	0	0	0
 La Colaborativa		350	0	4	0	0	0	0	0
-Boys and Girls Club of Greater Holyoke		350	0	3	0	0	0	0	0
+Boys & Girls Club of Greater Holyoke, Inc		350	0	3	0	0	0	0	0
+Town of Oxford		330	0	5	0	0	0	0	0
+Codman Square Neighborhood Development Corporation		327	0	12	0	0	0	0	0
 Orange		0	300	3	0	0	0	0	0
 Berkshire District Attorney’s Office		300	0	2	0	0	0	0	0
+Casa Myrna Vazquez		0	300	2	0	0	0	5	1
+YMCA of Central Mass		300	0	1	0	0	0	0	0
+Phillips Brooks House Association, Inc		300	0	4	0	0	0	0	0
+YWCA of Central Mass		0	300	2	0	0	0	0	0
 Community Dispute Settlement Center		278	0	6	0	0	0	0	0
 Monomoy Regional School District		275	0	2	0	0	0	0	0
+Greenagers		275	0	2	0	0	0	0	0
 Lynn		250	0	1	0	0	0	0	0
+Watertown Boys & Girls Club		250	0	2	0	0	0	0	0
 We Are Better Together Warren Daniel Hairston Project		200	0	1	0	0	0	0	0
 Lower Cape Outreach Council		200	0	2	0	0	0	0	0
 Pernet Family Health Service, Inc.		200	0	3	0	0	0	0	0
+YouthBuild Boston		200	0	2	0	0	0	0	0
+Beyond Soccer		200	0	3	0	0	0	0	0
+West End Boys & Girls Club		200	0	1	0	0	0	0	0
+Kwong Kow Chinese School		200	0	2	0	0	0	0	0
+Community Against Substance Abuse		200	0	1	0	0	0	0	0
+Salesian Boys & Girls Club		200	0	3	0	0	0	5	1
 Berkshire South Regional Community Center		190	0	4	0	0	0	0	0
+Methuen Arlington Neighborhood, Inc.		180	0	6	0	0	0	0	0
 United Way of Greater Plymouth County		170	0	2	0	0	0	0	0
 MA Organization for Addiction Recovery		150	0	3	0	0	0	0	0
+Boys & Girls Club of Marshfield		150	0	1	0	0	0	0	0
+Northern Berkshire Community Coalition		150	0	2	0	0	0	0	0
 Mattapan Food and Fitness Coalition		142	0	3	0	0	0	0	0
 Making Opportunity Count		135	0	2	0	0	0	0	0
 Springfield Partners for Community Action		125	0	1	0	0	0	0	0
 Cape Cod Children’s Place		125	0	2	0	0	0	0	0
 Cambodian Mutual Assistance Association		125	0	1	0	0	0	0	0
 The Legal Services Center of Harvard Law School		125	0	1	0	0	0	1	1
+Spanish American Center		125	0	2	0	0	0	0	0
+The3PointFoundation		125	0	1	0	0	0	0	0
+West Springfield Boys & Girls Club		125	0	1	0	0	0	0	0
+Camp Fire North Shore		120	0	2	0	0	0	0	0
 Eastie Farm		100	0	1	0	0	0	0	0
 Beverly Bootstraps		100	0	1	0	0	0	0	0
 Berkshire Regional Planning Commission		100	0	1	0	0	0	0	0
 InnerCity Weightlifting		100	0	1	0	0	0	0	0
+United Way of Massachusetts		100	0	2	0	0	0	0	0
 Dorchester Bay Economic Development Corp.		90	0	2	0	0	0	0	0
+New American Association of Massachusetts		84	0	4	0	0	0	0	0
 North Shore Community Mediation Center		80	0	2	0	0	0	0	0
+Worcester Youth Center		80	0	5	0	0	0	0	0
 Green Jobs Academy		75	0	3	0	0	0	0	0
+Boys and Girls Club of Lynn		75	0	2	0	0	0	0	0
+Town of Orange		75	0	2	0	0	0	0	0
+Groundwork Somerville		56	0	2	0	0	0	0	0
 Berkshire Immigrant Center		50	0	1	0	0	0	0	0
 Massachusetts Alliance of Portuguese Speakers		50	0	1	0	0	0	0	0
 Central Massachusetts Regional Planning Commission		50	0	1	0	0	0	0	0
+Roots Rising		50	0	1	0	0	0	2	1
+Berkshire County Regional Employment Board, Inc.		45	0	2	0	0	0	0	0
 Montachusett Regional Planning Commission		30	0	2	0	0	0	0	0
+Bikes Not Bombs, Inc		25	0	1	0	0	0	0	0
+Elements Learning Collaborative		20	0	1	0	0	0	0	0
 Volunteer Lawyers Project of the Boston Bar Association		0	0	0	0	0	0	0	0
 Alternatives for Community and Environment (ACE)		0	0	0	0	0	0	0	0
 Devenscrest Tenant Association (DCTA)		0	0	0	0	0	0	0	0
@@ -258,7 +354,7 @@ Community Boating Center, Inc		0	0	0	0	0	0	0	0
 YWCA of Southeastern MA		0	0	0	0	0	0	0	0
 Greater Lawrence Community Boating		0	0	0	0	0	0	0	0
 YMCA of the North Shore / Cape Ann YMCA		0	0	0	0	0	0	0	0
-Lawrence Boys and Girls Club		0	0	0	0	0	0	0	0
+Lawrence Boys & Girls Club		0	0	0	0	0	0	0	0
 Community Action of the Franklin, Hampshire, and North Quabbin Regions		0	0	0	0	0	0	0	0
 Springfield Department of Parks and Recreation		0	0	0	0	0	0	0	0
 Amherst-Pelham Regional School District		0	0	0	0	0	0	0	0
@@ -271,12 +367,12 @@ MetroLacross		0	0	0	0	0	0	0	0
 Anthony D. Perkins Community Center Council		0	0	0	0	0	0	0	0
 City of Revere / Revere on the Move		0	0	0	0	0	0	0	0
 Doc Wayne Youth Services		0	0	0	0	0	0	0	0
-Foundation for Boston Centers for Youth and Families		0	0	0	0	0	0	0	0
+Foundation for Boston Centers for Youth & Families		0	0	0	0	0	0	0	0
 Immigrant Family Services – Institute USA		0	0	0	0	0	0	0	0
 No Books No Ball Basketball Program		0	0	0	0	0	0	0	0
 St. Stephen’s Youth Program		0	0	0	0	0	0	0	0
-Boys and Girls Club of Fitchburg and Leominster		0	0	0	0	0	0	0	0
-Girls Incorporated of Worcester		0	0	0	0	0	0	0	0
+Boys & Girls Club of Fitchburg and Leominster		0	0	0	0	0	0	0	0
+Girls Inc. of Worcester		0	0	0	0	0	0	0	0
 Muslim Community Link		0	0	0	0	0	0	0	0
 Berkshire Regional Housing Authority		0	0	0	0	0	0	0	0
 City of Boston Mayor’s Office of Consumer Affairs and Licensing		0	0	0	0	0	0	0	0
@@ -304,3 +400,115 @@ Mediation Services of North Central Massachusetts, Inc.		0	0	0	0	0	0	0	0
 Somerville Mediation Program		0	0	0	0	0	0	0	0
 Dispute Resolution Services		0	0	0	0	0	0	0	0
 Family Services of Central Massachusetts		0	0	0	0	0	0	0	0
+Community Labor/United Northeast Center for Tradeswomen’s Equity		0	0	0	0	0	0	0	0
+Southeastern Regional Vocational-Technical School District		0	0	0	0	0	0	0	0
+Worcester Roots		0	0	0	0	0	0	0	0
+Cape Cod YMCA		0	0	0	0	0	0	0	0
+Martha’s Vineyard Boys & Girls Club		0	0	0	0	0	0	0	0
+Bristol County Agricultural High School		0	0	0	0	0	0	0	0
+Diabetes Association Inc.		0	0	0	0	0	0	0	0
+E.A.S.T Youth Center, Inc.		0	0	0	0	0	0	0	0
+Greater Fall River RE-CREATION		0	0	0	0	0	0	0	0
+New Bedford Parks, Recreation and Beaches Department		0	0	0	0	0	0	0	0
+City of Gloucester Health Department		0	0	0	0	0	0	0	0
+North Shore Community Development Corporation		0	0	0	0	0	0	0	0
+Boys & Girls Club of West Springfield		0	0	0	0	0	0	0	0
+Springfield Department of Parks, Buildings and Recreation Management		0	0	0	0	0	0	0	0
+Boston College Urban Hydro Farmers		0	0	0	0	0	0	0	0
+City of Lowell Recreation Office		0	0	0	0	0	0	0	0
+Philip Brooks House Association Inc.		0	0	0	0	0	0	0	0
+Boys and Girls Club of Brockton		0	0	0	0	0	0	0	0
+The Plymouth County 4-H Youth and Family Development Program		0	0	0	0	0	0	0	0
+The Boys & Girls Club Yawkey Club of Roxbury		0	0	0	0	0	0	0	0
+Center for Community Health Education Research and Service, Inc		0	0	0	0	0	0	0	0
+Level Ground Mixed Martial Arts		0	0	0	0	0	0	0	0
+MetroLacrosse		0	0	0	0	0	0	0	0
+Greater New Bedford Workforce Investment Board		0	0	0	0	0	0	0	0
+Boys and Girls Club of New Bedford		0	0	0	0	0	0	0	0
+Boys and Girls Club of Taunton		0	0	0	0	0	0	0	0
+Holyoke Parks and Recreation		0	0	0	0	0	0	0	0
+Don’t Take That Receipt!/ Easthampton Media		0	0	0	0	0	0	0	0
+Boys & Girls Club of Greater Westfield		0	0	0	0	0	0	0	0
+Arlington Boys and Girls Club		0	0	0	0	0	0	0	0
+Boys & Girls Club of Medford and Somerville		0	0	0	0	0	0	0	0
+Brazilian American Center Framingham		0	0	0	0	0	0	0	0
+Cambridge Camping Association		0	0	0	0	0	0	0	0
+Boys & Girls Club of Stoneham and Wakefield		0	0	0	0	0	0	0	0
+Town of Weymouth Recreation Department		0	0	0	0	0	0	0	0
+EAST Youth Center, Inc.		0	0	0	0	0	0	0	0
+West End House Boys & Girls Club		0	0	0	0	0	0	0	0
+Boston Project Ministries		0	0	0	0	0	0	0	0
+St. Stephen's Youth Programs		0	0	0	0	0	0	0	0
+Boys & Girls Club of Webster-Dudley		0	0	0	0	0	0	0	0
+Spanish American Center, Inc. of Leominster		0	0	0	0	0	0	0	0
+YMCA of Central Massachusetts		0	0	0	0	0	0	0	0
+Berkshire Family YMCA		0	0	0	0	0	0	1	1
+Attleboro Area School to Career Partnership, Inc.		0	0	0	0	0	0	0	0
+Boys & Girls Club of Fall River		0	0	0	0	0	0	0	0
+Saint Vincent’s Home Corporation		0	0	0	0	0	0	0	0
+Amesbury Recreation		0	0	0	0	0	0	0	0
+Gardening the Community, a Project of Third Sector New England		0	0	0	0	0	0	0	0
+Mark Meadows After School Program (MMASDC, Inc)		0	0	0	0	0	0	0	0
+Scalabrini Assistance and Cultural Center		0	0	0	0	0	0	0	0
+Centro Comunitario Scalabrini		0	0	0	0	0	0	0	0
+Medford Recreation		0	0	0	0	0	0	0	0
+Philips Brooks House Association, Inc.		0	0	0	0	0	0	0	0
+Town of Norwood Public Health Department		0	0	0	0	0	0	0	0
+Fourth Presbyterian Church of South Boston		0	0	0	0	0	0	3	1
+City of Chelsea Department of Public Works		0	0	0	0	0	0	0	0
+Town of Rutland Recreation Department		0	0	0	0	0	0	0	0
+Town of Webster Recreation Department		0	0	0	0	0	0	0	0
+Children Across America		0	0	0	0	0	0	0	0
+The Towns of Palmer, Weymouth, and Dartmouth		0	0	0	0	0	0	0	0
+Many Forks Form		0	0	0	0	0	0	0	0
+Boys and Girls Club of Greater Haverhill		0	0	0	0	0	0	0	0
+Suenos Basketball		0	0	0	0	0	0	0	0
+Boys and Girls Club of Greater New Bedford		0	0	0	0	0	0	0	0
+Boys and Girls Club of the Lower Merrimack Valley		0	0	0	0	0	0	0	0
+Boys and Girls Club of Metro South		0	0	0	0	0	0	1	1
+Share Your Love Foundation		0	0	0	0	0	0	0	0
+City of Lowell Recreation Department		0	0	0	0	0	0	0	0
+Boys & Girls Club of MetroWest		0	0	0	0	0	0	0	0
+The 3Point Foundation Inc.		0	0	0	0	0	0	0	0
+Immigrant Family Service Institute		0	0	0	0	0	0	0	0
+Lynn YMCA		0	0	0	0	0	0	0	0
+The United Way of Greater Plymouth County’s Family Center at Community Connections		0	0	0	0	0	0	0	0
+Community Boating Center of New Bedford		0	0	0	0	0	0	0	0
+Boys & Girls Clubs of Metro South		0	0	0	0	0	0	0	0
+Saint Vincent’s Services		0	0	0	0	0	0	0	0
+Backyard Growers		0	0	0	0	0	0	0	0
+Greenfield Recreation Department		0	0	0	0	0	0	0	0
+Hilltown Youth & Recovery Theatre		0	0	0	0	0	0	0	0
+Ascentria Community Services, Inc		0	0	0	0	0	0	0	0
+Springfield Boys & Girls Club, Inc		0	0	0	0	0	0	0	0
+MMASDC, Inc		0	0	0	0	0	0	0	0
+Boys & Girls Clubs of MetroWest		0	0	0	0	0	0	0	0
+Community Farms Outreach		0	0	0	0	0	0	0	0
+Making Opportunity Count (MOC, Inc.)		0	0	0	0	0	0	0	0
+Ansaar of Worcester, Inc		0	0	0	0	0	0	0	0
+City of Chelsea - Public Works		0	0	0	0	0	0	0	0
+Chelsea Restoration Corp.		0	0	0	0	0	0	0	0
+Cape Cod Young Men’s Christian Association, Inc.		0	0	0	0	0	0	0	0
+Boys & Girls Club of Lawrence		0	0	0	0	0	0	0	0
+Sheriff’s Department Hampden		0	0	0	0	0	0	0	0
+Northeast Organic Farming Association, MA Chapter (NOFA/Mass)		0	0	0	0	0	0	0	0
+Kwong Know Chinese School, Inc		0	0	0	0	0	0	0	0
+Third Sector New England, Inc (on behalf of Mattapan Food and Fitness Coalition)		0	0	0	0	0	0	0	0
+Growing Places Garden Project, Inc		0	0	0	0	0	0	0	0
+Hilltown Youth Performing Arts Programs		0	0	0	0	0	0	0	0
+Boys & Girls Club Family Center		0	0	0	0	0	0	0	0
+City of Marlborough Board of Health		0	0	0	0	0	0	0	0
+Mattapan Food and Fitness Coalition / Third Sector New England		0	0	0	0	0	0	0	0
+Everett Community Growers, Inc		0	0	0	0	0	0	0	0
+Attleboro Norton YMCA		0	0	0	0	0	0	1	1
+Girls Inc. of Boston and Lynn		0	0	0	0	0	0	0	0
+Franklin County’s YMCA		0	0	0	0	0	0	0	0
+Fishing Friends Inc.		0	0	0	0	0	0	0	0
+Survival Centers, Inc. (DBA Amherst Survival Center)		0	0	0	0	0	0	0	0
+Boston Chinatown Neighborhood Center, Inc.		0	0	0	0	0	0	4	1
+Wellspring Multi-Service Centers		0	0	0	0	0	0	0	0
+Duxbury Bay Maritime School		0	0	0	0	0	0	0	0
+Thomas Chew Memorial Boys & Girls Club		0	0	0	0	0	0	0	0
+Foundation for Underway Experiential Learning		0	0	0	0	0	0	0	0
+Newhall Fields Community Farm, Inc.		0	0	0	0	0	0	0	0
+Mystic Valley Young Men’s Christian Association		0	0	0	0	0	0	0	0
