@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where Massachusetts Attorney General Settlement Money Goes</title>
 <meta name="description" content="What the Massachusetts Attorney General's own announcements and settlement documents say about where settlement money goes. Preliminary.">
+<link rel="stylesheet" href="https://use.typekit.net/irk1bar.css">
 <style>
 /* Design tokens: colors, type and chart roles. */
 :root{
@@ -12,13 +13,13 @@
   --bay:#14558F; --berk:#388557; --cran:#680A1D; --berk-ink:#2A6B44;
   --bg:#E9EBEA; --card:#FFFFFF; --border:#CDD3D1; --rule:#CDD3D1;
   --text:#0B1113; --ink:#0B1113; --slate:#3E4A4D; --muted:#5A6467;
-  --navy:#14558F; --blue:#14558F; --accent:#680A1D; --red:#A81733; --green:#2A6B44; --amber:#B07C20; --gold:#B07C20;
-  --red-bg:rgba(168,23,51,.06); --green-bg:rgba(42,107,68,.06); --blue-bg:rgba(20,85,143,.06); --amber-bg:rgba(176,124,32,.06);
+  --navy:#14558F; --blue:#14558F; --accent:#680A1D; --red:#A81733; --green:#2A6B44;
+  --red-bg:rgba(168,23,51,.06); --green-bg:rgba(42,107,68,.06); --blue-bg:rgba(20,85,143,.06);
   --font-display:'halyard-display',system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-text:'halyard-text',system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:'ibm-plex-mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   /* chart roles */
-  --stated:var(--bay); --unstated:var(--amber); --listed:var(--bay); --recovered:var(--berk); --spend:#3E4A4D;
+  --stated:var(--bay); --unstated:var(--red); --listed:var(--bay); --recovered:var(--berk); --spend:#3E4A4D;
   --grid:var(--border); --axis:var(--muted);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -30,22 +31,21 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[t
 .skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--navy);padding:8px 12px;border-radius:6px;z-index:300;font-weight:600}
 .skip:focus{left:8px}
 
-.hero{background:var(--navy);color:var(--card);padding:56px 24px 42px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.10) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(104,10,29,.25) 0%,transparent 50%)}
-.hero h1{font-size:clamp(1.6rem,4.5vw,2.6rem);font-weight:400;margin:0 auto 8px;max-width:900px;line-height:1.2;position:relative}
+.hero{background:var(--navy);color:var(--card);padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(139,26,26,.10) 0%,transparent 50%)}
+.hero h1{font-size:clamp(1.5rem,4.5vw,2.5rem);font-weight:400;margin:0 auto 6px;max-width:900px;line-height:1.2;letter-spacing:-.01em;position:relative}
 .hero .sub{color:rgba(255,255,255,.86);font-size:.9rem;margin:0 auto 6px;max-width:760px;position:relative}
 .hero .sub.scope{font-size:.8rem;margin-bottom:24px}
 .hero-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:1000px;margin:0 auto;position:relative}
-.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:18px 10px;text-align:center}
-.hero-stat .val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:500}
-.hero-stat .val.flag{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:3px;text-underline-offset:6px}
-.hero-stat .lbl{font-size:.6875rem;color:rgba(255,255,255,.88);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:14px 8px;text-align:center}
+.hero-stat .val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400}
+.hero-stat .lbl{font-size:.6875rem;color:rgba(255,255,255,.74);margin-top:3px;text-transform:uppercase;letter-spacing:.08em;font-weight:500}
 .hero-stat sup.fn a{color:var(--card)}
 
 .tab-nav{scrollbar-width:thin;display:flex;justify-content:center;background:var(--card);border-bottom:1px solid var(--border);overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.tab-btn{padding:15px 22px;font:inherit;font-size:.78rem;font-weight:600;border:none;background:none;cursor:pointer;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.06em}
+.tab-btn{padding:13px 16px;font:inherit;font-size:.72rem;font-weight:600;border:none;background:none;cursor:pointer;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.05em}
 .tab-btn:hover{color:var(--text);background:rgba(0,0,0,.02)}
-.tab-btn[aria-selected=true]{color:var(--navy);border-bottom-color:var(--gold)}
+.tab-btn[aria-selected=true]{color:var(--navy);border-bottom-color:var(--navy)}
 .container{max-width:1200px;margin:0 auto;padding:28px 24px}
 .tab-content{display:none}
 .tab-content.active{display:block;animation:fadeUp .35s ease}
@@ -73,8 +73,8 @@ select,input[type=search],.btn{font:inherit;font-size:.82rem;padding:6px 10px;bo
 .info-box h4{color:var(--navy);font-size:.88rem;margin-bottom:10px;font-weight:700}
 .info-box p{font-size:.88rem;line-height:1.65;margin-bottom:8px}
 .info-box p:last-child{margin-bottom:0}
-.alert{background:var(--amber-bg);border:1px solid rgba(176,124,32,.25);border-radius:14px;padding:20px 24px;margin-bottom:26px;border-left:4px solid var(--amber)}
-.alert h4{color:var(--text);font-size:.88rem;margin-bottom:8px;font-weight:700}
+.alert{background:var(--red-bg);border:1px solid rgba(168,23,51,.15);border-radius:12px;padding:20px;margin-bottom:22px;border-left:4px solid var(--red)}
+.alert h4{color:var(--red);font-size:.88rem;margin-bottom:8px;font-weight:700}
 .alert p{font-size:.85rem;line-height:1.6}
 .chart-card,.data-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:26px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
 .chart-card h3,.data-card h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:2px}
@@ -120,7 +120,7 @@ ol.req{padding-left:22px;font-size:.88rem}
 #tip b{font-family:var(--font-mono);font-size:.95rem;display:block;font-weight:500}
 #tip .k{display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle}
 footer{text-align:center;padding:36px 24px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);background:var(--card);margin-top:36px}
-footer a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold)}
+footer a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--navy)}
 footer p{margin-bottom:6px}
 
 @media (max-width:768px){
