@@ -210,6 +210,33 @@ footer p{margin-bottom:6px}
     <div class="scroll" id="table-a" hidden></div>
     <div class="source" id="note-a"></div>
   </div>
+  <div class="chart-card" id="harmed-card" hidden>
+    <div class="card-head">
+      <div><h3>Inside the money stated to the harmed<sup class="fn"><a href="#fn-15" aria-label="Note 15">15</a></sup></h3>
+        <p class="small" id="harmed-sub"></p></div>
+    </div>
+    <div class="info-box" id="harmed-box"></div>
+    <div class="card-head">
+      <div><h3 class="h3s">What the release says about the amount</h3></div>
+      <button class="btn" type="button" data-twin="chart-h1" aria-pressed="false" aria-controls="chart-h1 table-h1">Table view</button>
+    </div>
+    <div class="chart" id="chart-h1"></div>
+    <div class="scroll" id="table-h1" hidden></div>
+    <div class="card-head">
+      <div><h3 class="h3s">Whether the release says how it reaches people</h3></div>
+      <button class="btn" type="button" data-twin="chart-h2" aria-pressed="false" aria-controls="chart-h2 table-h2">Table view</button>
+    </div>
+    <div class="legend"><span><i class="k1" style="background:var(--stated)"></i>Release says how</span><span><i class="k2" style="background:var(--unstated)"></i>Release does not say</span></div>
+    <div class="chart" id="chart-h2"></div>
+    <div class="scroll" id="table-h2" hidden></div>
+    <div class="card-head">
+      <div><h3 class="h3s">What the money is</h3></div>
+      <button class="btn" type="button" data-twin="chart-h3" aria-pressed="false" aria-controls="chart-h3 table-h3">Table view</button>
+    </div>
+    <div class="chart" id="chart-h3"></div>
+    <div class="scroll" id="table-h3" hidden></div>
+    <div class="source" id="note-h"></div>
+  </div>
 </div>
 
 <div id="settlements" class="tab-content" role="tabpanel" aria-labelledby="t-settlements">
@@ -569,6 +596,40 @@ function renderOverview() {
   tableOf($("#table-a"), ["Destination", "Share", "Dollars"], cats.map(c => [c[0], pct(c[1] / a.H), full(c[1])]), "Share of announced dollars by destination");
   const t3 = a.top3.filter(x => x.v > 0), t3s = sum(t3, "v");
   $("#note-a").textContent = "Source: Attorney General releases, 2015 to 2026. 'Announced' means what the release states, not what was collected. Some releases say the money goes to consumers, drivers or homeowners without an amount; the chart counts only stated dollar amounts (note 6). The three settlements with the most unassigned dollars (" + t3.map(x => x.n + " " + money(x.v)).join("; ") + ") hold " + money(t3s) + ", " + pct0(t3s / a.split) + " of the unassigned total." + (a.un ? " The two largest payments to the Commonwealth with no stated purpose (" + a.topUn.filter(x => x.v > 0).map(x => x.n + " " + money(x.v)).join("; ") + ") are " + pct0(sum(a.topUn, "v") / a.un) + " of that bucket." : "");
+  renderHarmed(rows);
+}
+
+/* ---------- inside the harmed money ---------- */
+const H_STATUS = [["paid_or_credited", "Release says it was paid or credited", 0], ["ordered_by_court", "Ordered by a court; payment not described", 0], ["agreed_in_settlement", "Agreed in a settlement", 0], ["expected_or_estimated", "Expected or estimated", 0], ["unclear", "Unclear", 1]];
+const H_MECH = [["automatic_payment_or_credit", "Paid or credited without a claim", 0], ["administrator_or_fund", "Through an administrator or fund", 0], ["claims_process", "Claim required", 0], ["to_be_determined", "Method still to be decided", 0], ["not_stated", "Release does not say how it reaches people", 1]];
+const H_FORM = [["cash_restitution_or_refund", "Cash restitution or refunds", 0], ["bill_credit_or_debt_wipeout", "Bill credits or account debt wiped", 0], ["back_wages", "Back wages", 0], ["cash_debt_paydown", "Cash toward victims' debts", 0], ["fund_for_victims", "Paid into a fund for victims", 0], ["mixed", "More than one kind, no split", 0], ["unclear", "Release says only \"relief\"", 1]];
+function renderHarmed(rows) {
+  const card = $("#harmed-card"), CL = DATA.harmed || {};
+  const hs = rows.filter(r => r.h > 0 && r.hm > 0 && CL[r.id]);
+  const tot = sum(hs, "hm");
+  card.hidden = !tot;
+  if (!tot) return;
+  const group = (key, defs) => defs.map(d => { const m = hs.filter(r => CL[r.id][key] === d[0]); return { l: d[1], bad: d[2], v: sum(m, "hm"), n: m.length }; }).filter(g => g.n).sort((a, b) => b.v - a.v);
+  $("#harmed-sub").textContent = money(tot) + " stated to the harmed across " + hs.length + " settlements, classified from each release by two readers.";
+  const top = hs.slice().sort((a, b) => b.hm - a.hm);
+  const t1 = top[0], c1 = CL[t1.id], lab = (defs, k) => (defs.find(d => d[0] === k) || [0, k])[1].toLowerCase();
+  const stated = sum(hs.filter(r => CL[r.id].m !== "not_stated"), "hm");
+  const paidV = sum(hs.filter(r => CL[r.id].s === "paid_or_credited"), "hm");
+  const box = $("#harmed-box"); box.replaceChildren();
+  box.appendChild(el("h4", null, "What this does and does not show"));
+  box.appendChild(el("p", null, "Only " + pct(paidV / tot) + " (" + money(paidV) + ") is described in the release as already paid or credited. " + pct(stated / tot) + " (" + money(stated) + ") comes from releases that say how the money reaches people; for " + pct(1 - stated / tot) + " the release does not say."));
+  box.appendChild(el("p", null, "The largest, " + t1.n.replace(/;/g, ",") + " (" + money(t1.hm) + ", " + pct(t1.hm / tot) + " of this money), is described as " + lab(H_STATUS, c1.s) + "; " + lab(H_MECH, c1.m) + ". The ten largest settlements are " + pct(sum(top.slice(0, 10), "hm") / tot) + " of it."));
+  const mk = (host, defs, key, aria) => {
+    const g = group(key, defs);
+    barChart($(host), g.map(x => ({ label: x.l, v: x.v / tot, cls: x.bad ? "s2" : "s1", color: x.bad ? "var(--unstated)" : "var(--stated)", valueText: pct(x.v / tot), sub: money(x.v) + ", " + x.n + (x.n === 1 ? " settlement" : " settlements"),
+      aria: x.l + ": " + pct(x.v / tot) + ", " + full(x.v), tip: [{ text: full(x.v) + " of " + full(tot) }, { text: x.n + (x.n === 1 ? " settlement" : " settlements") }] })), { aria: aria, ticks: [0, 0.25, 0.5, 0.75], tickFmt: t => Math.round(t * 100) + "%" });
+    tableOf($(host.replace("chart", "table")), ["Class", "Share", "Dollars", "Settlements"], g.map(x => [x.l, pct(x.v / tot), full(x.v), String(x.n)]), aria);
+  };
+  mk("#chart-h1", H_STATUS, "s", "Share of money stated to the harmed, by how the release frames the amount");
+  mk("#chart-h2", H_MECH, "m", "Share of money stated to the harmed, by whether the release says how it reaches people");
+  mk("#chart-h3", H_FORM, "f", "Share of money stated to the harmed, by what the money is");
+  const adj = hs.filter(r => CL[r.id].a).length;
+  $("#note-h").textContent = "Source: Attorney General releases. The classes record what each release says, not what happened afterward. " + hs.length + " settlements; " + adj + " needed a third reader to settle a disagreement. Settlements with no stated total are not included.";
 }
 
 /* ---------- settlements table ---------- */
@@ -748,7 +809,8 @@ function renderNotes() {
     ["Archive coverage.", "The Attorney General's live listing holds " + listed.toLocaleString("en-US") + " releases from January 2015. The Internet Archive holds " + rec + " more dated releases the listing lacks (" + win + " from September 2017 to March 2018), plus " + M.recovered_undated + " captured pages that are undated or failed to download. Releases the listing lacks and the Internet Archive never captured are unread, and releases before 2015 are not covered. The office retitles some releases after publication, so matching by title alone overstates what is missing; the register marks the retitled copies.", [["list of recovered releases", R + "releases-missing-from-live-listing.tsv"]]],
     ["Political-money ties.", "Employee donations are contributions by individuals who list the organization as their employer, matched by exact name; they are not the organization's own money. Lobbying is what the organization paid lobbyists, as filed, over all years the filings cover. Officials' disclosures counts records in which an official lists the organization, not dollars. Names are matched after ignoring case, punctuation and endings such as Inc., so the count of distinct names is a normalized count. Two organizations with the same name would be confused."],
     ["How reliable the readings are.", "A model read each release and quoted its source. A script checked that every quote appears in the release and every amount appears in its quote. A second reader, given no earlier answers, re-read " + M.blind_n + " random releases: the two matched on " + agree + " of " + both + " amounts both recorded. Of " + catAny + " category amounts recorded by at least one reader, " + catOne + " were recorded by one reader only. The comparison does not show which direction the stated shares would move. The readings were not checked against the settlement documents themselves, except as noted.", [["second-reader comparison", R + "blind-reread-comparison.tsv"]]],
-    ["Figures typed in by hand.", "A few numbers in the notes are not computed from the data: the 713 releases chosen by title and the 43 and 127 in note 9, the 7 to 18 years and the Meta guarantee in note 8 (taken from the registers' own quotes), and the $13.5 million judgment in note 7 (named from a register note)."]
+    ["Figures typed in by hand.", "A few numbers in the notes are not computed from the data: the 713 releases chosen by title and the 43 and 127 in note 9, the 7 to 18 years and the Meta guarantee in note 8 (taken from the registers' own quotes), and the $13.5 million judgment in note 7 (named from a register note)."],
+    ["How the harmed money was classified.", "Each settlement with an amount stated to the harmed was classified from its release by two readers working independently, on four questions: what the money is, who receives it, how the release frames the amount (paid or credited, ordered by a court, agreed in a settlement, or expected), and whether the release says how it reaches people. A third reader settled each disagreement from the release text, and every cited phrase was checked against that text. The classes record what a release says, not what happened afterward: \"ordered by a court\" means the release does not say the money was paid. Who receives it is in the data file; two cases matter for reading the totals. State Street's restitution goes to custody-bank clients that are mutual funds and investment companies, not individual consumers. HealthMarkets' amount is a post-trial court order for what policy buyers paid.", [["classified harmed-money register", R + "harmed-money-classified.tsv"]]]
   ];
   const ol = $("#notes"); ol.replaceChildren();
   items.forEach((it, i) => {

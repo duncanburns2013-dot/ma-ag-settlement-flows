@@ -157,9 +157,10 @@ excl = {"first_failed": len(failed), "first_failed_h": sum(num(r["headline_dolla
         "multi_read": len(ms_rows), "multi_settle": sum(1 for r in ms_rows if r["kind"] == "multistate_settlement"),
         "multi_no_ma": sum(1 for r in ms_rows if r["status"].startswith("not counted: no Massachusetts amount")) + sum(1 for r in audit_rows if r["kind"] == "multistate_settlement" and r["status"].startswith("counted") and not num(r["ma_amount"])),
         "audit_read": len(audit_rows)}
+harmed_rows = {r["release_id"]: {"f": r["form"], "r": r["recipients"], "s": r["amount_status"], "m": r["mechanism"], "a": 1 if r["how_decided"].startswith("readers disagreed") else 0} for r in rd("harmed-money-classified.tsv")}
 data = {"meta": {"built": BUILT, "retrieved": RETRIEVED, "excl": excl, "repo": "https://github.com/duncanburns2013-dot/ma-ag-settlement-flows", "listed_releases": sum(listed.values()),
                  "recovered_absent": sum(recovered.values()), "recovered_undated": rec_undated, "readable_documents": 170, "docs_read_by_year": dict(sorted(docs_read.items())), "blind_n": len(blind)},
-        "settlements": settlements, "multistate": multistate, "docs": docs, "grantees": grantees, "budget": budget, "months": months, "blind": blind_sum}
+        "settlements": settlements, "harmed": harmed_rows, "multistate": multistate, "docs": docs, "grantees": grantees, "budget": budget, "months": months, "blind": blind_sum}
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 with open(OUT, "w", encoding="utf-8") as fh:
     json.dump(data, fh, separators=(",", ":"), ensure_ascii=False)
