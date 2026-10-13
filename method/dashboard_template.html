@@ -35,7 +35,11 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[t
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(139,26,26,.10) 0%,transparent 50%)}
 .hero h1{font-size:clamp(1.5rem,4.5vw,2.5rem);font-weight:400;margin:0 auto 6px;max-width:900px;line-height:1.2;letter-spacing:-.01em;position:relative}
 .hero .sub{color:rgba(255,255,255,.86);font-size:.9rem;margin:0 auto 6px;max-width:760px;position:relative}
-.hero .sub.scope{font-size:.8rem;margin-bottom:24px}
+.hero .sub.scope{font-size:.8rem;margin-bottom:10px}
+.hero-links{font-size:.82rem;margin:0 auto 22px;position:relative}
+.hero-links b{font-weight:600;margin-right:6px;color:rgba(255,255,255,.82)}
+.hero-links a{color:var(--card);text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.hero-links a:hover{text-decoration-thickness:2px}
 .hero-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:1000px;margin:0 auto;position:relative}
 .hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:14px 8px;text-align:center}
 .hero-stat .val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400}
@@ -157,6 +161,7 @@ footer p{margin-bottom:6px}
   <h1>Where Massachusetts Attorney General Settlement Money Goes</h1>
   <p class="sub">What the office's own announcements and settlement documents say about each dollar. Preliminary, built __BUILT__.</p>
   <p class="sub scope" id="hero-scope"></p>
+  <p class="hero-links" id="hero-links"></p>
   <div class="hero-stats" id="hero-stats" aria-live="polite"></div>
 </header>
 
@@ -824,7 +829,10 @@ function renderNotes() {
   const rq = $("#reqs"); rq.replaceChildren(); REQ.forEach(r => rq.appendChild(el("li", null, r)));
   const fl2 = $("#foot-links"); fl2.replaceChildren();
   fl2.appendChild(document.createTextNode("Sources: Attorney General releases and settlement documents on mass.gov, the Internet Archive, the Comptroller's CTHRU spending data, and campaign-finance, lobbying and ethics disclosure files. Retrieved __RETRIEVED__. "));
-  [["Repository", REPO], ["All data files", REPO + "/tree/main/data"], ["Completeness audit", REPO + "/blob/main/findings/05-completeness-audit.md"], ["Public records requests", REPO + "/blob/main/PUBLIC-RECORDS-REQUESTS.md"]].forEach((l, i) => { if (i) fl2.appendChild(document.createTextNode(" · ")); fl2.appendChild(link(l[1], l[0])); });
+  const LINKS = [["All data files", REPO + "/tree/main/data"], ["Repository", REPO], ["Completeness audit", REPO + "/blob/main/findings/05-completeness-audit.md"], ["To the harmed", REPO + "/blob/main/findings/06-to-the-harmed.md"], ["Public records requests", REPO + "/blob/main/PUBLIC-RECORDS-REQUESTS.md"]];
+  LINKS.forEach((l, i) => { if (i) fl2.appendChild(document.createTextNode(" · ")); fl2.appendChild(link(l[1], l[0])); });
+  const hl = $("#hero-links"); hl.replaceChildren(el("b", null, "See the data:"));
+  LINKS.forEach((l, i) => { if (i) hl.appendChild(document.createTextNode(" · ")); hl.appendChild(link(l[1], l[0])); });
 }
 
 /* ---------- tabs and wiring ---------- */

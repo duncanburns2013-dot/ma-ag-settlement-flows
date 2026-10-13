@@ -4,6 +4,8 @@ When the Massachusetts Attorney General announces a settlement, the announcement
 
 **Status: preliminary.** Built on 2026-10-12 from public sources by reading, not from any insider data. Every dollar amount in the registers carries a verbatim quote from the document it came from, and the quotes and amounts were checked by script. The readings were made by a model and were not checked against the underlying settlement documents, except where a finding says so. A completeness audit followed the first sweep and changed the headline; [`findings/05-completeness-audit.md`](findings/05-completeness-audit.md) records how. Errors and corrections are welcome.
 
+**Dashboard:** https://duncanburns2013-dot.github.io/ma-ag-settlement-flows/ (built from the registers in `data/`)
+
 **Browse the data:** [all registers (`data/`)](https://github.com/duncanburns2013-dot/ma-ag-settlement-flows/tree/main/data) · [completeness audit](findings/05-completeness-audit.md) · [public records requests](PUBLIC-RECORDS-REQUESTS.md) · repository: https://github.com/duncanburns2013-dot/ma-ag-settlement-flows
 
 ## What it found
